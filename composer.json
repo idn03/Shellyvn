@@ -1,0 +1,15 @@
+{
+    "require": {
+        "bramus/router": "~1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src/classes",
+            "Config\\": "app/config"
+        },
+        "files": [
+            "app/src/utils/Helper.php",
+            "app/src/utils/Validator.php"
+        ]
+    }
+}
