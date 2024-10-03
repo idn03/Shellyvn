@@ -1,11 +1,19 @@
 <?php
 
 namespace App\controllers;
-use App\models\{HashtagModel, PostModel, UserModel, CommentModel};
+use App\models\{UserModel};
 use PDOException;
 
 class HomeController {
     public function showHomePage() {
-        renderPage('/sites/home.php', []);
+        if (getPrefixUrl() !== '') {
+            redirectTo('/');
+        }
+
+        $userModel = new UserModel();
+		$user = $userModel->getOne($_SESSION['user']['taikhoan']);
+        renderPage('/sites/home.php', [
+            'user'=> $user
+        ]);
     }
 }

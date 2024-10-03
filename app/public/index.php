@@ -11,4 +11,9 @@ use Bramus\Router\Router;
     // Home Page Router
     require_once __DIR__ . '/../src/routes/home.php';
 
+    // Contact Page Router
+    require_once __DIR__ . '/../src/routes/contact.php';
+
+    $router->get('/logout', 'AuthController@logout');
+    
     $router->run();

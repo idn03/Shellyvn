@@ -28,4 +28,56 @@ class AuthController {
 			);
 		}
 	}
+
+	public function login() {
+		try {
+
+			$username = $_POST['taikhoan'];
+			$password = $_POST['matkhau'];
+
+			$userModel = new UserModel();
+			$user = $userModel->getOne($username);
+			
+			if (!$user || !($password == $user['matkhau'])) {
+				redirectTo(
+					'/',
+					[
+						'status' => 'danger',
+						'form' => ['username' => $username],
+						'errors' => ['message' => 'Account or password is incorrect']
+					]
+				);
+				return;
+			}
+
+			setIntoSession('user', [
+				'taikhoan' => $username,
+				'hoten' => $user['hoten'],
+				'gioitinh' => $user['gioitinh'],
+				'ngaysinh' => $user['ngaysinh'],
+                'chuyennganh' => $user['chuyennganh'],
+				'loaitk' => $user['loaitk'],
+			]);
+			// setIntoSession('isdisabled','disabled');
+
+			redirectTo('/', [
+				'status' => 'success',
+				'message' => 'You are now logged in'
+			]);
+		} catch (PDOException $e) {
+			redirectTo(
+				'/',
+				[
+					'status' => 'danger',
+					'message' => 'Please try again'
+				]
+			);
+		}
+	}
+	public function logout() {
+		removeFromSession('username');
+		redirectTo('/login', [
+			'status' => 'success'
+		]);
+	}
 }

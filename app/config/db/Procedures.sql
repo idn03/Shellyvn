@@ -21,6 +21,17 @@ DELIMITER $$
 $$
 
 DELIMITER $$
+    drop procedure if exists getOne $$
+    create procedure getOne(in _taikhoan varchar(20))
+    begin
+        select *
+        from tai_khoan
+        where taikhoan = _taikhoan;
+    end $$
+$$
+call getOne('nhatnam_0955');
+
+DELIMITER $$
     drop procedure if exists addTaiKhoan $$
     create procedure addTaiKhoan(
         in _taikhoan varchar(20), 
