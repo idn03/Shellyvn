@@ -19,6 +19,7 @@
 
         border-radius: var(--bo-l);
         box-shadow: 0px 4px 4px var(--shadow-color);
+        position: relative;
     }
 
         .info-card__container {
@@ -39,6 +40,32 @@
             .container__thumbnail {
                 opacity: 0.75;
             }
+        
+        .edit-btn {
+            position: relative;
+            background-color: #D2E0FB;
+            margin-top: 0px;
+
+            border-radius: 0px 0px var(--bo-m) var(--bo-m);
+        }
+        .edit-btn:hover {
+            margin-top: 12px;
+
+            border-radius: var(--bo-m);
+        }
+        
+    #calendar {
+
+    }
+
+        .styled-calendar-container {
+            height: 699.1px;
+
+            margin-top: 24px;
+
+            border-radius: var(--bo-l);
+            box-shadow: 0px 4px 4px var(--shadow-color);
+        }
 </style>
 <body id="top">
     <?php require __DIR__ . '/../partials/header.php'; ?>
@@ -66,6 +93,22 @@
             <div class="col-lg-3">
                 <img class="container__thumbnail" src="/imgs/info-card-thumbnail.png" height="160px" alt="">
             </div>
+        </section>
+        <div class="text-center"><button class="edit-btn"><i class="fa-solid fa-user-pen"></i> Edit Profile</button></div>
+
+
+        <section id="calendar" class="text-center space-top">
+            <h1><i class="fa-regular fa-calendar"></i> Calendar & Schedule</h1>
+            <iframe src="https://embed.styledcalendar.com/#XsXh7FddP0Q5jLKweBGw" 
+                title="Styled Calendar" 
+                class="styled-calendar-container" 
+                style="width: 100%; border: none;" 
+                data-cy="calendar-embed-iframe">
+            </iframe>
+        </section>
+
+        <section id="subject-list" class="text-center space-top">
+            <h1><i class="fa-solid fa-list"></i> Subject List</h1>
         </section>
     </main>
 

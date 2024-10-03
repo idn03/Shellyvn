@@ -73,7 +73,7 @@
 
     <div id="header__extra" class="col-lg-3 d-flex show">
         <p class="extra__username"><i>Username</i></p>
-        <a href="#"><button class="extra__log-out-btn">Log out</button></a>
+        <a href="/logout"><button class="extra__log-out-btn">Log out</button></a>
     </div>
 </header>
 
