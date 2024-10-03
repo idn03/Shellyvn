@@ -28,15 +28,15 @@
 
     main {
         min-height: 600px;
+        margin: 60px 8%;
     }
 
     h1 {
         font-weight: var(--text-bold);
+        color: #F9F3CC;
     }
 
-    ul {
-        list-style: none;
-    }
+    ul { list-style: none; }
     ul li {
         padding: 8px;
         margin: 0px 12px;

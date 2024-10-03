@@ -4,11 +4,7 @@
 <?php require __DIR__ . '/../partials/head.php'; ?>
 
 <style>
-    h1 {color: #F9F3CC;}
     p {color: #333 !important; margin: 4px;}
-    #home-page {
-        margin: 60px 8%;
-    }
 
     #home__info-card {
         background-color: #fff;
@@ -42,7 +38,6 @@
             }
         
         .edit-btn {
-            position: relative;
             background-color: #D2E0FB;
             margin-top: 0px;
 
@@ -78,14 +73,20 @@
             <div class="col-lg-7 info-card__container">
                 <div class="d-flex">
                     <div class="text-center">
-                        <img class="container__avatar" src="https://i.pinimg.com/236x/86/f0/1b/86f01b2d26eaf5cd20250c9966d0da58.jpg" height="120px" alt="">
+                        <img class="container__avatar" src="/imgs/avatars/<?= htmlEscape($user['avatar']) ?>" height="120px" alt="">
                     </div>
                     <div class="container__content">
-                        <h4>Full name</h4>
+                        <h4><?= htmlEscape($user['hoten']) ?></h4>
                         <div>
-                            <p>Gender: ...</p>
-                            <p>Birth:: ../../....</p>
-                            <p>Major: ...</p>
+                            <p>
+                                Gender: &nbsp; <?php 
+                                    if($user['gioitinh'] == 1) 
+                                    echo '<i class="fa-solid fa-mars" style="color: #333;"></i> Male'; 
+                                    else echo '<i class="fa-solid fa-venus" style="color: #333;"></i> Female';
+                                ?>
+                            </p>
+                            <p>Birth: &nbsp; <?= htmlEscape(formatDate($user['ngaysinh'])) ?></p>
+                            <p>Major: &nbsp; <?= htmlEscape($user['chuyennganh']) ?></p>
                         </div>
                     </div>
                 </div>

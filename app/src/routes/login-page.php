@@ -1,9 +1,6 @@
 <?php
 
-// $router->mount('/', function() use ($router) {
-//     $router->get('/', 'AuthController@showLoginPage');
-// });
-
-$router->get('/login', 'AuthController@showLoginPage');
-
-$router->get('/', 'AuthController@showLoginPage');
+$router->mount('/login', function() use ($router) {
+    $router->get('/', 'AuthController@showLoginPage');
+    $router->post('/','AuthController@login');
+});

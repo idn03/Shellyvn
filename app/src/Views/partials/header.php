@@ -5,7 +5,7 @@
         margin: 30px 60px;
     }
 
-    #header a,p {
+    #header a,p,i {
         color: #F9F3CC;
     }
     
@@ -72,7 +72,7 @@
     </nav>
 
     <div id="header__extra" class="col-lg-3 d-flex show">
-        <p class="extra__username"><i>Username</i></p>
+        <p class="extra__username"><i><?= $user['taikhoan'] ?></i></p>
         <a href="/logout"><button class="extra__log-out-btn">Log out</button></a>
     </div>
 </header>

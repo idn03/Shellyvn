@@ -9,14 +9,17 @@
     /* LOGIN PAGE */
     #login-page {
         background-image: url('/imgs/login-bg.jpg');
-        height: 776px;
+        height: 738px;
         background-size: cover;
+
+        margin: 0;
     }
 
         /* Login Box */
         .login-box {
             z-index: 1;
             background-color: #FFF;
+            padding-top: 16px;
             border-radius: 0 0 var(--bo-l) var(--bo-l);
             box-shadow: 0px 2px 4px var(--shadow-color);
         }
@@ -59,7 +62,7 @@
 
         .form--login__username,
         .form--login__password {
-            margin: 0px 32px;
+            margin: 0px 16px;
             
             display: flex;
             flex-direction: column;
@@ -77,19 +80,19 @@
 <body>
     <main id="login-page">
         <div class="row justify-content-center" style="width: 100%;">
-            <section class="col-lg-5 login-box space-top hidden">
+            <section class="login-box col-lg-5 hidden">
                 <h1 class="text-center">L O G I N</h1>
 
                 <div class="cointainer__customize form--login">
                     <form action="/login" method="post">
                         <div class="form--login__username space-top">
                             <label for="username"><i class="fa-solid fa-user"></i> Username</label>
-                            <input type="text" name="" id="username" class="input-box input-box--username">
+                            <input type="text" name="taikhoan" id="username" class="input-box input-box--username">
                         </div>
 
                         <div class="form--login__password space-top">
                             <label for="password"><i class="fa-solid fa-key"></i> Password</label>
-                            <input type="password" name="" id="password" class="input-box input-box--username">
+                            <input type="password" name="matkhau" id="password" class="input-box input-box--username">
                             <a href="#" class="nav-link" style="align-self: flex-end;">Forgot your password?</a>
                         </div>
 
