@@ -1,3 +1,7 @@
+<?php
+    $displayConstraint = 'd-none';
+    if (isAdmin()) $displayConstraint = '';
+?>
 <style>
     /* HEADER */
     #header {
@@ -39,9 +43,26 @@
         animation: slideOut 0.5s forwards;
     }
 
+        /* Header Logo */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-12px);
+            }
+            60% {
+                transform: translateY(-6px);
+            }
+        }
+        #header__logo {
+            animation: bounce 2s infinite;
+        }
+
         /* Nav List */
         .nav-list {
             text-shadow: 0px 4px 4px var(--shadow-color);
+            justify-content: start;
         }
 
         /* Extra */
@@ -63,11 +84,12 @@
     <div class="col-lg-1" style="z-index: 1;">
         <img id="header__logo" src="/imgs/shelly-logo.png" height="48px" alt="">
     </div>
-    <nav id="header__nav" class="col-lg-5 show">
+    <nav id="header__nav" class="col-lg-7 show">
         <ul class="nav-list d-flex">
-            <li><a href="#" class="nav-link">Nav Item</a></li>
-            <li><a href="#" class="nav-link">Nav Item</a></li>
-            <li><a href="#" class="nav-link">Nav Item</a></li>
+            <li><a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="/subjects" class="nav-link"><i class="fa-solid fa-list"></i> Subjects List</a></li>
+            <li class="<?= $displayConstraint ?>"><a href="#" class="nav-link"><i class="fa-solid fa-person"></i> Human Resource</a></li>
+            <li><a href="/contact" class="nav-link"><i class="fa-solid fa-address-book"></i> Contact</a></li>
         </ul>
     </nav>
 

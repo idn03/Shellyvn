@@ -42,11 +42,11 @@ function setIntoSession(string $key, string|array $value): void {
 }
 
 function isLogged(): bool {
-    return isset($_SESSION['username']);
+    return isset($_SESSION['user']);
 }
 
 function isAdmin(): bool {
-    return $_SESSION['username']['role'] === 'admin';
+    return $_SESSION['user']['loaitk'] === 'quantri';
 }
 
 function formatDate(string $date): string {

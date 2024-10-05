@@ -10,7 +10,7 @@ class UserModel {
 		$this->pdo = PDOFactory::connect();
 	}
 
-  public function getAll(): array {
+  	public function getAll(): array {
 		$preparedStmt = 'call getAllTaiKhoan()';
 		$statement = $this->pdo->prepare($preparedStmt);
 		$statement->execute();
@@ -43,7 +43,7 @@ class UserModel {
 		$statement->bindParam(':gioitinh', $data['gioitinh'], PDO::PARAM_STR);
 		$statement->bindParam(':ngaysinh', $data['ngaysinh'], PDO::PARAM_STR);
 		$statement->bindParam(':chuyennganh', $data['chuyennganh'], PDO::PARAM_STR);
-    $statement->bindParam(':loaitk', $data['loaitk'], PDO::PARAM_STR);
+    	$statement->bindParam(':loaitk', $data['loaitk'], PDO::PARAM_STR);
 		$statement->execute();
 	}
 

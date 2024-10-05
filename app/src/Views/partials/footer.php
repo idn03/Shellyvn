@@ -8,10 +8,6 @@
        
     }
 
-    #footer p {
-        margin-bottom: 0;
-    }
-
     .address__icon {
         align-self: center;
         margin-right: 8px;
@@ -27,6 +23,7 @@
 
     .signature {
         margin-top: 16px;
+        color: #F9F3CC;
     }
 
 </style>
@@ -47,6 +44,6 @@
 
     <!-- Signature -->
     <div class="signature text-center">
-        <p>Designed by iDn.03</p>
+        Designed by iDn.03
     </div>
 </footer>

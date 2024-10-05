@@ -1,3 +1,32 @@
+<?php
+require_once 'E:/NHAT_DUY/Shelly/vendor/autoload.php';
+require __DIR__ . '/../../config/google-login.php';
+
+// create Client Request to access Google API
+$client = new Google_Client();
+$client->setClientId($clientID);
+$client->setClientSecret($clientSecret);
+$client->setRedirectUri($redirectUri);
+$client->addScope("email");
+$client->addScope("profile");
+
+// authenticate code from Google OAuth Flow
+if (isset($_GET['code'])) {
+  $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+  $client->setAccessToken($token['access_token']);
+
+  // get profile info
+  $google_oauth = new Google_Service_Oauth2($client);
+  $google_account_info = $google_oauth->userinfo->get();
+  $email =  $google_account_info->email;
+  $name =  $google_account_info->name;
+
+  // now you can use this profile info to create account in your website and make user logged in.
+} else {
+    $authUrl = $client->createAuthUrl();
+}
+?>
+
 <!DOCTYPE html>
 <!-- Login Page -->
 <html lang="en">
@@ -7,6 +36,8 @@
 
 <style>
     /* LOGIN PAGE */
+    h1 { color: #333;}
+
     #login-page {
         background-image: url('/imgs/login-bg.jpg');
         height: 738px;
@@ -113,7 +144,7 @@
                         </div>
                     </div>
 
-                    <a href="#" class="nav-link d-flex justify-content-center space-bot">
+                    <a href="<?= $authUrl; ?>" class="nav-link d-flex justify-content-center space-bot">
                         <div>
                             <img src="/imgs/icons/social-icons/gg-icon.png" height="28px" width="28px" alt="">
                         </div>

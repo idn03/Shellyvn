@@ -48,6 +48,8 @@
 
             border-radius: var(--bo-m);
         }
+
+        .edit-btn i { color: #333; }
         
     #calendar {
 
@@ -92,7 +94,7 @@
                 </div>
             </div>
             <div class="col-lg-3">
-                <img class="container__thumbnail" src="/imgs/info-card-thumbnail.png" height="160px" alt="">
+                <img class="container__thumbnail" src="/imgs/thumbnails/info-card-thumbnail.png" height="160px" alt="">
             </div>
         </section>
         <div class="text-center"><button class="edit-btn"><i class="fa-solid fa-user-pen"></i> Edit Profile</button></div>

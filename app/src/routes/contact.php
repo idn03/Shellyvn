@@ -1,3 +1,6 @@
 <?php
 
-$router->get('/contact', 'ContactController@showContactPage');
+if (isAdmin()) {
+    $router->get('/contact', 'ContactController@showContactAdminPage');
+} 
+else $router->get('/contact', 'ContactController@showContactPage');

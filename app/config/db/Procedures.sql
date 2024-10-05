@@ -109,10 +109,10 @@ call getAllMonHoc();
 
 DELIMITER $$
     drop procedure if exists addMonHoc $$
-    create procedure addMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date, in _taikhoan varchar(20))
+    create procedure addMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date, in _cover varchar(20), in _taikhoan varchar(20))
     begin
-        insert into mon_hoc(ma_mon, tenmon, ngaybd, ngaykt, taikhoan)
-        values(_ma_mon, _tenmon, _ngaybd, _ngaykt, _taikhoan);
+        insert into mon_hoc(ma_mon, tenmon, ngaybd, ngaykt, cover, taikhoan)
+        values(_ma_mon, _tenmon, _ngaybd, _ngaykt, _thumbnail, _taikhoan);
     end
 $$
 call addMonHoc('SH001', 'C++ Programming', '2024-06-10', '2024-10-10', 'nhatnam_0955');
@@ -206,10 +206,10 @@ $$
 
 DELIMITER $$
     drop procedure if exists addThanhTuu $$
-    create procedure addThanhTuu(in _tenthanhtuu text, in _ngaycap date, in _mota text, in _taikhoan varchar(20))
+    create procedure addThanhTuu(in _tenthanhtuu text, in _ngaycap date, in _mota text, in _thumbnail varchar(20), in _taikhoan varchar(20))
     begin
-        insert into thanh_tuu(tenthanhtuu, ngaycap, mota, taikhoan)
-        values(_tenthanhtuu, _ngaycap, _mota, _taikhoan);
+        insert into thanh_tuu(tenthanhtuu, ngaycap, mota, thumbnail, taikhoan)
+        values(_tenthanhtuu, _ngaycap, _mota, _thumbnail, _taikhoan);
     end
 $$
 

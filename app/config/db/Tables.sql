@@ -17,7 +17,7 @@ create table Mon_hoc (
     ngaybd date,
     ngaykt date,
     ghim tinyint(1) default 0, -- 1: Marked       0: Not Mark
-    thumbnail varchar(20),
+    cover varchar(20),
     taikhoan varchar(20),
     
     foreign key (taikhoan) references Tai_khoan(taikhoan)
@@ -40,6 +40,7 @@ create table Thanh_tuu (
     tenthanhtuu text not null,
     ngaycap date not null,
     mota text,
+    icon varchar(20),
     taikhoan varchar(20),
     
     foreign key (taikhoan) references Tai_khoan(taikhoan)
