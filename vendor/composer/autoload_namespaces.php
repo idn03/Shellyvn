@@ -6,5 +6,6 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Google_' => array($vendorDir . '/google/apiclient/src'),
     'Bramus' => array($vendorDir . '/bramus/router/src'),
 );
