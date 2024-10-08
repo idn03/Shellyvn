@@ -94,7 +94,7 @@
     </nav>
 
     <div id="header__extra" class="col-lg-3 d-flex show">
-        <p class="extra__username"><i><?= $user['taikhoan'] ?></i></p>
+        <p class="extra__username"><i><?= $_SESSION['user']['taikhoan'] ?></i></p>
         <a href="/logout"><button class="extra__log-out-btn">Log out</button></a>
     </div>
 </header>

@@ -58,7 +58,7 @@
         .styled-calendar-container {
             height: 699.1px;
 
-            margin-top: 24px;
+            margin: 24px 0px;
 
             border-radius: var(--bo-l);
             box-shadow: 0px 4px 4px var(--shadow-color);
@@ -108,10 +108,6 @@
                 style="width: 100%; border: none;" 
                 data-cy="calendar-embed-iframe">
             </iframe>
-        </section>
-
-        <section id="subject-list" class="text-center space-top">
-            <h1><i class="fa-solid fa-list"></i> Subject List</h1>
         </section>
     </main>
 

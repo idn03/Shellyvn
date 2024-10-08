@@ -6,7 +6,6 @@ use PDOException;
 
 class ContactController {
     public function showContactPage() {
-        
         $userModel = new UserModel();
 		$user = $userModel->getOne($_SESSION['user']['taikhoan']);
 
@@ -28,4 +27,18 @@ class ContactController {
         ]);
     }
 
+    public function create() {
+        $data = [];
+        $data['noidunglh'] = $_POST['des'];
+        $data['loailh'] = (String)$_POST['problem'];
+        $data['taikhoan'] = $_SESSION['user']['taikhoan'];
+
+        $contactModel = new ContactModel();
+        $contactModel->create($data);
+
+        redirectTo('/contact', [
+			'status' => 'success',
+			'message' => 'Posted successfully.'
+		]);
+    }
 }

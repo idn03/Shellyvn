@@ -1,5 +1,5 @@
 <?php
-if (isset($_SESSION['user']['taikhoan'])) {
+if (isLogged()) {
     $router->get('/', 'HomeController@showHomePage');
 }
 else $router->get('/', 'AuthController@showLoginPage');

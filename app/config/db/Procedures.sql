@@ -21,15 +21,14 @@ DELIMITER $$
 $$
 
 DELIMITER $$
-    drop procedure if exists getOne $$
-    create procedure getOne(in _taikhoan varchar(20))
+    drop procedure if exists getOneTaiKhoan $$
+    create procedure getOneTaiKhoan(in _taikhoan varchar(20))
     begin
         select *
         from tai_khoan
         where taikhoan = _taikhoan;
     end $$
 $$
-call getOne('nhatnam_0955');
 
 DELIMITER $$
     drop procedure if exists addTaiKhoan $$
@@ -106,6 +105,27 @@ DELIMITER $$
     end $$
 $$
 call getAllMonHoc();
+
+DELIMITER $$
+    drop procedure if exists getAllMonHocBySomeOne $$
+    create procedure getAllMonHocBySomeOne(in _taikhoan varchar(20))
+    begin
+        select *
+        from mon_hoc
+        where taikhoan = _taikhoan
+        order by ghim desc;
+    end $$
+$$
+
+DELIMITER $$
+    drop procedure if exists getOneMonHoc $$
+    create procedure getOneMonHoc(in _ma_mon varchar(12))
+    begin
+        select *
+        from hoc_vien
+        where ma_mon = _ma_mon;
+    end $$
+$$
 
 DELIMITER $$
     drop procedure if exists addMonHoc $$
@@ -242,6 +262,7 @@ DELIMITER $$
         order by ngaytaolh;
     end $$
 $$
+call getAllLienHe();
 
 DELIMITER $$
     drop procedure if exists addLienHe $$

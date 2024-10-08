@@ -24,13 +24,13 @@
 </style>
 
 <section class="row justify-content-center form-container">
-    <form action="/contact.php" method="post" class="col-lg-6">
+    <form action="/contact" method="post" class="col-lg-6">
         <label for="problems" class="form-container__label">What is your issue of concern?</label>
         <select name="problem" id="problems" class="form-select">
-            <option value="bug">System error</option>
+            <option value="bug" selected>System error</option>
             <option value="quote">Question</option>
             <option value="suggest">Suggestion</option>
-            <option value="other">Other</option>
+            <option value="other">Other Issue</option>
         </select>
 
         <label for="description" class="form-container__label">Please describe your problem</label>

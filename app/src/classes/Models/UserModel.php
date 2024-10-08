@@ -26,7 +26,7 @@ class UserModel {
   }
 
   public function getOne(string|null $username): array|bool {
-		$preparedStmt = 'call getOne(:username)';
+		$preparedStmt = 'call getOneTaiKhoan(:username)';
 		$statement = $this->pdo->prepare($preparedStmt);
 		
 		$statement->bindParam(':username', $username, PDO::PARAM_STR);

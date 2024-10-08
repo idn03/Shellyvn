@@ -88,7 +88,7 @@
     }
 
     /* Customize Classes */
-    .text-blur {color: #B4B4B8;}
+    .text-blur {color: #B4B4B8; opacity: 0.8;}
     .space-top {padding-top: 48px;}
     .space-bot {padding-bottom: 48px;}
     .container__customize {margin: 32px;}
