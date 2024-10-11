@@ -132,10 +132,10 @@ DELIMITER $$
     create procedure addMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date, in _cover varchar(20), in _taikhoan varchar(20))
     begin
         insert into mon_hoc(ma_mon, tenmon, ngaybd, ngaykt, cover, taikhoan)
-        values(_ma_mon, _tenmon, _ngaybd, _ngaykt, _thumbnail, _taikhoan);
+        values(_ma_mon, _tenmon, _ngaybd, _ngaykt, _cover, _taikhoan);
     end
 $$
-call addMonHoc('SH001', 'C++ Programming', '2024-06-10', '2024-10-10', 'nhatnam_0955');
+call addMonHoc('SH001', 'C++ Programming', '2024-06-10', '2024-10-10', 'silk.jpg', 'nhatnam_0955');
 
 DELIMITER $$
     drop procedure if exists editMonHoc $$
@@ -259,7 +259,7 @@ DELIMITER $$
     begin
         select *
         from lien_he
-        order by ngaytaolh;
+        order by ngaytaolh desc;
     end $$
 $$
 call getAllLienHe();

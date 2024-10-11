@@ -50,22 +50,21 @@ if (isset($_GET['code'])) {
         .login-box {
             z-index: 1;
             background-color: #FFF;
-            padding-top: 16px;
-            border-radius: 0 0 var(--bo-l) var(--bo-l);
+            height: 738px;
             box-shadow: 0px 2px 4px var(--shadow-color);
         }
 
-        .login-box__container {
-            margin: 32px;
-        }
-    
-        .logo-box {
-            background-color: #8EACCD;
-            width: fit-content;
-            padding: 16px 80px;
-            box-shadow: 0px 2px 4px var(--shadow-color);
-            border-radius: 0px 0px 18px 18px;
-        }
+            .login-box__container {
+                margin: 32px;
+            }
+
+            .login-box__logo {
+                background-color: #8EACCD;
+                padding: 8px;
+                border-radius: 50%;
+            }
+
+            .login-box h1 { margin-top: 12px; }
 
         @keyframes slideDown {
             from {
@@ -91,6 +90,8 @@ if (isset($_GET['code'])) {
             margin: 0px 48px;
         }
 
+        .form--login input:focus { outline: none; }
+
         .form--login__username,
         .form--login__password {
             margin: 0px 16px;
@@ -111,7 +112,8 @@ if (isset($_GET['code'])) {
 <body>
     <main id="login-page">
         <div class="row justify-content-center" style="width: 100%;">
-            <section class="login-box col-lg-5 hidden">
+            <section class="col-lg-5 space-top login-box hidden">
+                <div class="text-center"><img class="login-box__logo" src="/imgs/shelly-logo.png" height="60px" alt=""></div>
                 <h1 class="text-center">L O G I N</h1>
 
                 <div class="cointainer__customize form--login">
@@ -144,7 +146,7 @@ if (isset($_GET['code'])) {
                         </div>
                     </div>
 
-                    <a href="<?= $authUrl; ?>" class="nav-link d-flex justify-content-center space-bot">
+                    <a href="<?= $authUrl; ?>" class="nav-link d-flex justify-content-center">
                         <div>
                             <img src="/imgs/icons/social-icons/gg-icon.png" height="28px" width="28px" alt="">
                         </div>
@@ -152,12 +154,6 @@ if (isset($_GET['code'])) {
                     </a>
                 </div>
             
-            </section>
-
-            <section class="col-lg-8 text-center row justify-content-center">
-                <div class="logo-box hidden">
-                    <img src="/imgs/logo-text.png" height="40px" alt="logo">
-                </div>
             </section>
 
         </div>
