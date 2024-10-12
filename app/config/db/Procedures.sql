@@ -8,7 +8,6 @@ DELIMITER $$
         order by loaitk desc;
     end $$
 $$
-call getAllTaiKhoan();
 
 DELIMITER $$
     drop procedure if exists getFullName $$
@@ -46,8 +45,6 @@ DELIMITER $$
         values(_taikhoan, _matkhau, _hoten, _gioitinh, _ngaysinh, _chuyennganh, _loaitk);
     end
 $$
-call addTaiKhoan('nhatnam_0955', '12345678', 'Bui Nhat Nam', '1', '1977-01-22', 'Computer Science', 'giangvien');
-call addTaiKhoan('admin1', '1', 'Dang Nhat Duy', '1', '2003-10-27', 'Information Technology', 'quantri');
 
 DELIMITER $$
     drop procedure if exists editTaiKhoan $$
@@ -92,7 +89,6 @@ DELIMITER $$
         commit;
     end 
 $$
-call deleteTaiKhoan('nhatnam_0955');
 
 -- Proreduces of Mon_hoc
 DELIMITER $$
@@ -135,7 +131,6 @@ DELIMITER $$
         values(_ma_mon, _tenmon, _ngaybd, _ngaykt, _cover, _taikhoan);
     end
 $$
-call addMonHoc('SH001', 'C++ Programming', '2024-06-10', '2024-10-10', 'silk.jpg', 'nhatnam_0955');
 
 DELIMITER $$
     drop procedure if exists editMonHoc $$
@@ -172,7 +167,6 @@ DELIMITER $$
         commit;
     end
 $$
-call deleteMonHoc('SH001');
 
 -- Procedures of Ghi_chu
 DELIMITER $$
@@ -193,7 +187,6 @@ DELIMITER $$
         values(_noidung_ghichu, _ma_mon);
     end
 $$
-call addGhiChu('Parent meeting on 02/10/2024', 'SH001');
 
 DELIMITER $$
     drop procedure if exists editGhiChu $$
@@ -262,7 +255,6 @@ DELIMITER $$
         order by ngaytaolh desc;
     end $$
 $$
-call getAllLienHe();
 
 DELIMITER $$
     drop procedure if exists addLienHe $$
@@ -282,7 +274,6 @@ DELIMITER $$
         from hoc_vien;
     end $$
 $$
-call getAllHocVien();
 
 DELIMITER $$
     drop procedure if exists getOneHocVien $$
@@ -302,7 +293,6 @@ DELIMITER $$
         values(_sdt_hocvien, _tenhocvien, _gioitinh_hocvien, _trinhdo_hocvien);
     end
 $$
-call addHocVien('0901014368', 'Le Hong Van', 0, 'Highschool Student');
 
 DELIMITER $$
     drop procedure if exists editHocVien $$
@@ -337,4 +327,3 @@ DELIMITER $$
         commit;
     end
 $$
-call deleteHocVien('0901014368');
