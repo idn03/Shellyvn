@@ -49,7 +49,7 @@
 
         .card-title {
             position: absolute;
-            top: 250px;
+            top: 240px;
             left: 16px;
             font-weight: var(--text-bold);
         }
@@ -69,6 +69,10 @@
         .card__btn i { 
             color: #333; 
             margin: 0;
+            transition: 0.5s all;
+        }
+        .card__btn:hover i {
+            color: #D7E5CA;
         }
 
 </style>
@@ -91,7 +95,7 @@
             <?php foreach ($subjects as $subject): ?>
                 <div class="col-lg-4 card subject-card">
                     <img src="/imgs/covers/<?= htmlEscape($subject['cover']) ?>" class="card-img-top" alt="...">
-                    <h5 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h5>
+                    <h3 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h3>
                     <div class="card-body">
                         <h5><?= htmlEscape($subject['ma_mon']) ?></h5>
                         <div class="d-flex" style="justify-content: space-between;">

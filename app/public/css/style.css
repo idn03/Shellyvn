@@ -69,7 +69,9 @@
     }
     button:hover {
         cursor: pointer;
-        opacity: 0.8;
+        
+        background-color: #333;
+        color: #D7E5CA;
     }
     
     i {

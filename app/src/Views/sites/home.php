@@ -43,10 +43,10 @@
 
             border-radius: 0px 0px var(--bo-m) var(--bo-m);
         }
-        .edit-btn:hover {
-            margin-top: 12px;
-
-            border-radius: var(--bo-m);
+        .edit-btn i { transition: 0.5s all; }
+        .edit-btn:hover,
+        .edit-btn:hover i {
+            color: #D2E0FB;
         }
 
         .edit-btn i { color: #333; }
