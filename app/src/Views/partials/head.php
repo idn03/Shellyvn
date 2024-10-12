@@ -22,4 +22,7 @@
     <style>
         <?php require __DIR__ . '/../../../public/css/style.css'; ?>
     </style>
+
+    <!-- Javascript Customizing -->
+     <script src="/js/scripts.js"></script>
 </head>

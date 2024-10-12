@@ -22,7 +22,7 @@
 
             border-radius: 30px 0px 0px 30px;
         }
-            .search-engine__input:focus { outline: none; }
+        .search-engine__input:focus { outline: none; }
 
         .search-engine__btn {
             height: 60px;
@@ -34,18 +34,22 @@
             border-radius: 0px 30px 30px 0px;
             box-shadow: none;
         }
-            .search-engine__btn i { color: #333; }
+        .search-engine__btn i { 
+            color: #333;
+            transition: 0.5s all;
+        }
+        .search-engine__btn:hover i { color: #fff; }
     
     /* Subject Card */
     .subject-card {
-        margin: 16px;
+        margin: 32px;
         border: none;
         padding: 0;
 
         border-radius: var(--bo-l);
         box-shadow: 0px 4px 4px var(--shadow-color);
     }
-    .subject-card .card-img-top { border-radius: var(--bo-l) var(--bo-l) 0px 0px;}
+    .subject-card .card-img-top { border-radius: var(--bo-l) var(--bo-l) 0px 0px; height: 300px;}
 
         .card-title {
             position: absolute;
@@ -79,8 +83,10 @@
 
 <body id="top">
     <?php require __DIR__ . '/../partials/header.php'; ?>
+
+    <?php require __DIR__ . '/../partials/spinner.php'; ?>
     <main>
-        <section id="subject-list" class="text-center space-top">
+        <section id="subject-list" class="text-center">
             <h1><i class="fa-solid fa-list"></i> Subject List</h1>
         </section>
 
@@ -91,13 +97,13 @@
             </div>
         </form>
 
-        <section class="row">
+        <div class="row">
             <?php foreach ($subjects as $subject): ?>
-                <div class="col-lg-4 card subject-card">
+                <section class="col-lg-5 card subject-card">
                     <img src="/imgs/covers/<?= htmlEscape($subject['cover']) ?>" class="card-img-top" alt="...">
                     <h3 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h3>
                     <div class="card-body">
-                        <h5><?= htmlEscape($subject['ma_mon']) ?></h5>
+                        <h5>ID: <?= htmlEscape($subject['ma_mon']) ?></h5>
                         <div class="d-flex" style="justify-content: space-between;">
                             <div>
                                 <p class="card-text"><i class="fa-solid fa-user"></i> Students: ...</p>
@@ -107,9 +113,9 @@
                             <a href="/subjects/<?= htmlEscape($subject['ma_mon']) ?>"><button class="card__btn"><i class="fa-solid fa-angles-right"></i></button></a>
                         </div>
                     </div>
-                </div>
+                </section>
             <?php endforeach; ?>   
-        </section>
+        </div>
     </main>
     
     <?php require __DIR__ . '/../partials/footer.php'; ?>

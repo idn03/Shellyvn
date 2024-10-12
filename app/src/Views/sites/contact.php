@@ -19,31 +19,32 @@ if (isAdmin()) { $contactPath = 'contact-admin.php'; }
 </style>
 
 <body>
-<?php require __DIR__ . '/../partials/header.php'; ?>
+    <?php require __DIR__ . '/../partials/header.php'; ?>
 
-<main>
-    <h1 class="text-center"><i class="fa-solid fa-address-book"></i> CONTACT</h1>
+    <?php require __DIR__ . '/../partials/spinner.php'; ?>
+    <main>
+        <h1 class="text-center"><i class="fa-solid fa-address-book"></i> CONTACT</h1>
 
-    <section class="text-center user-info">
-        
-        <div class="row justify-content-center space-top">
-            <h4 class="col-lg-3" style="align-content: center;"><?= htmlEscape($user['hoten']) ?></h4>
-            <div class="col-lg-3 user-info__detail">
-                <p>Gender: &nbsp; 
-                    <?php 
-                        if($user['gioitinh'] == 1) echo '<i class="fa-solid fa-mars" style="color: #333;"></i> Male'; 
-                        else echo '<i class="fa-solid fa-venus" style="color: #333;"></i> Female';
-                    ?>
-                </p>
-                <p>Birth: &nbsp; <?= htmlEscape(formatDate($user['ngaysinh'])) ?></p>
-                <p>Major: &nbsp; <?= htmlEscape($user['chuyennganh']) ?></p>
+        <section class="text-center user-info">
+            
+            <div class="row justify-content-center space-top">
+                <h4 class="col-lg-3" style="align-content: center;"><?= htmlEscape($user['hoten']) ?></h4>
+                <div class="col-lg-3 user-info__detail">
+                    <p>Gender: &nbsp; 
+                        <?php 
+                            if($user['gioitinh'] == 1) echo '<i class="fa-solid fa-mars" style="color: #333;"></i> Male'; 
+                            else echo '<i class="fa-solid fa-venus" style="color: #333;"></i> Female';
+                        ?>
+                    </p>
+                    <p>Birth: &nbsp; <?= htmlEscape(formatDate($user['ngaysinh'])) ?></p>
+                    <p>Major: &nbsp; <?= htmlEscape($user['chuyennganh']) ?></p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <?php require __DIR__ . '/interfaces/' . $contactPath; ?>
-</main>
+        <?php require __DIR__ . '/interfaces/' . $contactPath; ?>
+    </main>
 
-<?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../partials/footer.php'; ?>
 </body>
 </html>

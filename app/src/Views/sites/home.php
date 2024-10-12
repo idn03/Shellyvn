@@ -66,6 +66,8 @@
 </style>
 <body id="top">
     <?php require __DIR__ . '/../partials/header.php'; ?>
+
+    <?php require __DIR__ . '/../partials/spinner.php'; ?>
     <main id="home-page">
         <h1 class="text-center">
             Welcome to Shelly

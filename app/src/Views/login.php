@@ -36,6 +36,11 @@ if (isset($_GET['code'])) {
 
 <style>
     /* LOGIN PAGE */
+    main {
+        display: block;
+        opacity: 1;
+        transition: none;
+    }
     h1 { color: #333;}
 
     #login-page {
