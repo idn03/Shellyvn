@@ -125,7 +125,7 @@ if (isset($_GET['code'])) {
                     <form action="/login" method="post">
                         <div class="form--login__username space-top">
                             <label for="username"><i class="fa-solid fa-user"></i> Username</label>
-                            <input type="text" name="taikhoan" id="username" class="input-box input-box--username">
+                            <input type="text" name="taikhoan" id="username" class="input-box input-box--username" value="<?= $_SESSION['form']['username'] ?? '' ?>">
                         </div>
 
                         <div class="form--login__password space-top">
@@ -158,10 +158,9 @@ if (isset($_GET['code'])) {
                         <p style="margin: 2px 0px 0px 12px;">Sign in with Google</p>
                     </a>
                 </div>
-            
             </section>
-
         </div>
+        <?php require __DIR__ . '/partials/toast.php' ?>
     </main>
 </body>
 
@@ -172,7 +171,7 @@ if (isset($_GET['code'])) {
         const logoBox = document.querySelector('.logo-box');
 
         loginBox.classList.add('show');
-        logoBox.classList.add('show');
+        // logoBox.classList.add('show');
     });
 </script>
 </html>

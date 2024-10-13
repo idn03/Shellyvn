@@ -42,9 +42,9 @@ class AuthController {
 				redirectTo(
 					'/',
 					[
-						'status' => 'danger',
+						'status' => 'failed',
 						'form' => ['username' => $username],
-						'errors' => ['message' => 'Account or password is incorrect']
+						'message' => 'Account or password is incorrect'
 					]
 				);
 				return;

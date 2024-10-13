@@ -1,5 +1,6 @@
+// Loading Effect
 window.addEventListener('load', function() {
-    setTimeout(function() {
+  setTimeout(function() {
     // Hide the spinner
     document.querySelector('.spinner-container').style.display = 'none';
     
