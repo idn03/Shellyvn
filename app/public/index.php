@@ -17,6 +17,9 @@ use Bramus\Router\Router;
         // Subjects Page Router
         require_once __DIR__ . '/../src/routes/subjects.php';
 
+        // Profile Page Router
+        require_once __DIR__ . '/../src/routes/edit-profile.php';
+
         $router->get('/logout', 'AuthController@logout');
     }
     
