@@ -99,8 +99,9 @@
                 <img class="container__thumbnail" src="/imgs/thumbnails/info-card-thumbnail.png" height="160px" alt="">
             </div>
         </section>
-        <div class="text-center"><button class="edit-btn"><i class="fa-solid fa-user-pen"></i> Edit Profile</button></div>
-
+        <a href="/profile" class="text-center" style="display: block;">
+            <button class="edit-btn"><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
+        </a>
 
         <section id="calendar" class="text-center space-top">
             <h1><i class="fa-regular fa-calendar"></i> Calendar & Schedule</h1>

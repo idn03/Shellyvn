@@ -91,22 +91,8 @@ if (isset($_GET['code'])) {
         }
 
         /* Form */
-        .form--login {
+        .form-login {
             margin: 0px 48px;
-        }
-
-        .form--login input:focus { outline: none; }
-
-        .form--login__username,
-        .form--login__password {
-            margin: 0px 16px;
-            
-            display: flex;
-            flex-direction: column;
-        }
-
-        .input-box--username {
-            border-radius: var(--bo-s);
         }
 
         .submit-btn {
@@ -121,16 +107,16 @@ if (isset($_GET['code'])) {
                 <div class="text-center"><img class="login-box__logo" src="/imgs/shelly-logo.png" height="60px" alt=""></div>
                 <h1 class="text-center">L O G I N</h1>
 
-                <div class="cointainer__customize form--login">
+                <div class="form-login">
                     <form action="/login" method="post">
-                        <div class="form--login__username space-top">
+                        <div class="input-group--customize space-top">
                             <label for="username"><i class="fa-solid fa-user"></i> Username</label>
-                            <input type="text" name="taikhoan" id="username" class="input-box input-box--username" value="<?= $_SESSION['form']['username'] ?? '' ?>">
+                            <input type="text" name="taikhoan" id="username" class="form__input" value="<?= $_SESSION['form']['username'] ?? '' ?>">
                         </div>
 
-                        <div class="form--login__password space-top">
+                        <div class="input-group--customize space-top">
                             <label for="password"><i class="fa-solid fa-key"></i> Password</label>
-                            <input type="password" name="matkhau" id="password" class="input-box input-box--username">
+                            <input type="password" name="matkhau" id="password" class="form__input">
                             <a href="#" class="nav-link" style="align-self: flex-end;">Forgot your password?</a>
                         </div>
 

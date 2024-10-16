@@ -47,10 +47,9 @@ DELIMITER $$
 $$
 
 DELIMITER $$
-    drop procedure if exists editTaiKhoan $$
-    create procedure editTaiKhoan(
+    drop procedure if exists editTTTaiKhoan $$
+    create procedure editTTTaiKhoan(
         in _taikhoan varchar(20), 
-        in _matkhau varchar(20), 
         in _hoten varchar(50), 
         in _gioitinh tinyint(1), 
         in _ngaysinh date,
@@ -59,7 +58,20 @@ DELIMITER $$
         )
     begin
         update tai_khoan
-        set matkhau = _matkhau, hoten = _hoten, gioitinh = _gioitinh, ngaysinh = _ngaysinh, chuyennganh = _chuyennganh, loaitk = _loaitk
+        set hoten = _hoten, gioitinh = _gioitinh, ngaysinh = _ngaysinh, chuyennganh = _chuyennganh, loaitk = _loaitk
+        where _taikhoan = taikhoan;
+    end
+$$
+
+DELIMITER $$
+    drop procedure if exists editMKTaiKhoan $$
+    create procedure editMKTaiKhoan(
+        in _taikhoan varchar(20), 
+        in _matkhau varchar(20)
+        )
+    begin
+        update tai_khoan
+        set matkhau = _matkhau
         where _taikhoan = taikhoan;
     end
 $$
@@ -209,29 +221,30 @@ $$
 
 -- Procedures of Thanh_tuu
 DELIMITER $$
-    drop procedure if exists getAllThanhTuu $$
-    create procedure getAllThanhTuu()
+    drop procedure if exists getAllThanhTuuBySomeOne $$
+    create procedure getAllThanhTuuBySomeOne(in _taikhoan varchar(20))
     begin
         select *
-        from thanh_tuu;
+        from thanh_tuu
+        where taikhoan = _taikhoan;
     end $$
 $$
 
 DELIMITER $$
     drop procedure if exists addThanhTuu $$
-    create procedure addThanhTuu(in _tenthanhtuu text, in _ngaycap date, in _mota text, in _thumbnail varchar(20), in _taikhoan varchar(20))
+    create procedure addThanhTuu(in _tenthanhtuu text, in _ngaycap date, in _mota text, in _icon varchar(20), in _taikhoan varchar(20))
     begin
-        insert into thanh_tuu(tenthanhtuu, ngaycap, mota, thumbnail, taikhoan)
-        values(_tenthanhtuu, _ngaycap, _mota, _thumbnail, _taikhoan);
+        insert into thanh_tuu(tenthanhtuu, ngaycap, mota, icon, taikhoan)
+        values(_tenthanhtuu, _ngaycap, _mota, _icon, _taikhoan);
     end
 $$
 
 DELIMITER $$
     drop procedure if exists editThanhTuu $$
-    create procedure editThanhTuu(in _stt_thanhtuu int(10),  in _tenthanhtuu text, in _ngaycap date, in _mota text)
+    create procedure editThanhTuu(in _stt_thanhtuu int(10),  in _tenthanhtuu text, in _ngaycap date, in _mota text, in _icon varchar(20))
     begin
         update thanh_tuu
-        set  tenthanhtuu = _tenthanhtuu, ngaycap = _ngaycap, mota = _mota
+        set  tenthanhtuu = _tenthanhtuu, ngaycap = _ngaycap, mota = _mota, icon = _icon
         where _stt_thanhtuu = stt_thanhtuu;
     end
 $$
