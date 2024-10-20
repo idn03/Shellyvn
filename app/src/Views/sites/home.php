@@ -25,6 +25,8 @@
         }
             .container__avatar {
                 background-color: #D2E0FB;
+                
+                padding: 8px 8px 2px 8px;
 
                 border-radius: var(--bo-m);
                 box-shadow: 0px 4px 4px var(--shadow-color);

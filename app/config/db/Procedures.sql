@@ -49,6 +49,7 @@ $$
 DELIMITER $$
     drop procedure if exists editTTTaiKhoan $$
     create procedure editTTTaiKhoan(
+        in _avatar varchar(255),
         in _taikhoan varchar(20), 
         in _hoten varchar(50), 
         in _gioitinh tinyint(1), 
@@ -58,7 +59,7 @@ DELIMITER $$
         )
     begin
         update tai_khoan
-        set hoten = _hoten, gioitinh = _gioitinh, ngaysinh = _ngaysinh, chuyennganh = _chuyennganh, loaitk = _loaitk
+        set avatar = _avatar, hoten = _hoten, gioitinh = _gioitinh, ngaysinh = _ngaysinh, chuyennganh = _chuyennganh, loaitk = _loaitk
         where _taikhoan = taikhoan;
     end
 $$
@@ -130,7 +131,7 @@ DELIMITER $$
     create procedure getOneMonHoc(in _ma_mon varchar(12))
     begin
         select *
-        from hoc_vien
+        from mon_hoc
         where ma_mon = _ma_mon;
     end $$
 $$
@@ -227,6 +228,16 @@ DELIMITER $$
         select *
         from thanh_tuu
         where taikhoan = _taikhoan;
+    end $$
+$$
+
+DELIMITER $$
+    drop procedure if exists getOneThanhTuu $$
+    create procedure getOneThanhTuu(in _stt_thanhtuu varchar(12))
+    begin
+        select *
+        from thanh_tuu
+        where stt_thanhtuu = _stt_thanhtuu;
     end $$
 $$
 

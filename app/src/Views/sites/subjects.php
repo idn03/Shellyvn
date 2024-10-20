@@ -22,7 +22,6 @@
 
             border-radius: 30px 0px 0px 30px;
         }
-        .search-engine__input:focus { outline: none; }
 
         .search-engine__btn {
             height: 60px;
@@ -86,6 +85,12 @@
 
     <?php require __DIR__ . '/../partials/spinner.php'; ?>
     <main>
+        <section class="path-tree">
+            <h3>Path Tree:</h3>
+            <a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
+            <a href="/subjects" class="nav-link tab"><i class="fa-solid fa-list"></i> Subjects List</a>
+        </section>
+
         <section id="subject-list" class="text-center">
             <h1><i class="fa-solid fa-list"></i> Subject List</h1>
         </section>
@@ -103,7 +108,7 @@
                     <img src="/imgs/covers/<?= htmlEscape($subject['cover']) ?>" class="card-img-top" alt="...">
                     <h3 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h3>
                     <div class="card-body">
-                        <h5>ID: <?= htmlEscape($subject['ma_mon']) ?></h5>
+                        <h5>ID: <?= htmlEscape($subject['ma_mon']) ?> - <?= htmlEscape($subject['taikhoan']) ?></h5>
                         <div class="d-flex" style="justify-content: space-between;">
                             <div>
                                 <p class="card-text"><i class="fa-solid fa-user"></i> Students: ...</p>

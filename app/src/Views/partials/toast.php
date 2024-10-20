@@ -57,7 +57,10 @@
 
         padding: 0 16px;
     }
-    .toast__text h3 { color: #333; }
+    .toast__text h3 { 
+        color: #333; 
+        text-shadow: none;
+    }
 
 
     .toast--error {
