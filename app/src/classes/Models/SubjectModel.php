@@ -27,12 +27,12 @@ class SubjectModel {
 	}
 
     public function getOne(string|null $subjetKey): array|bool {
-		$preparedStmt = 'call getOneMonHoc()';
+		$preparedStmt = 'call getOneMonHoc(:ma_mon)';
 		$statement = $this->pdo->prepare($preparedStmt);
         
-        $statement->bindParam(':taikhoan', $subjetKey, PDO::PARAM_STR);
+        $statement->bindParam(':ma_mon', $subjetKey, PDO::PARAM_STR);
 		$statement->execute();
-		return $statement->fetchAll(PDO::FETCH_ASSOC);
+		return $statement->fetch(PDO::FETCH_ASSOC);
 	}
 
     public function create(array $data) {

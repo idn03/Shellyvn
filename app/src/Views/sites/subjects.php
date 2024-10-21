@@ -1,3 +1,10 @@
+<?php
+    $displayConstraint = 'd-none';
+    if (isAdmin()) $displayConstraint = '';
+
+    $subjectCode = basename($_SERVER['REQUEST_URI']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +45,39 @@
             transition: 0.5s all;
         }
         .search-engine__btn:hover i { color: #fff; }
+    
+    /* New-Subject Button */
+    .add-subject {
+        padding: 32px;
+    }
+
+        .add-subject__btn {
+            background-color: #D2E0FB80;
+
+            display: flex;
+            justify-content: center;
+
+            padding: 16px;
+
+            border-radius: var(--bo-s);
+            box-shadow: 0px 4px 4px var(--shadow-color);
+
+            text-decoration: none;
+        }
+        .add-subject__btn:hover {
+            cursor: pointer;
+        }
+
+        .add-subject__btn i {
+            align-self: center;
+            
+            font-size: 24px;
+
+            margin: 0;
+        }
+
+        .add-subject__content {margin: 18px 0px 0px 18px;}
+        .add-subject__content p {color: #33333380;}
     
     /* Subject Card */
     .subject-card {
@@ -97,10 +137,23 @@
 
         <form action="/subjects" method="get" class="d-flex justify-content-center">
             <div class="search-engine">
-                <input type="text" class="search-engine__input" name="search-engine" placeholder="Type Subject Code here...">
+                <input type="text" class="search-engine__input" name="search" placeholder="Type Subject Code here...">
                 <button class="search-engine__btn" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </form>
+
+        <div class="add-subject <?= $displayConstraint ?>">
+            <div class="d-flex">
+                <a class="add-subject__btn" href="/subjects/add">
+                    <i class="fa-solid fa-plus"></i>
+                </a>
+
+                <div class="add-subject__content">
+                    <h5>Add New Subject</h5>
+                    <p class="tab">This feature is for Administrators only.</p>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <?php foreach ($subjects as $subject): ?>

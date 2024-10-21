@@ -104,9 +104,12 @@
                             <input type="hidden" name="avatar" value="<?= htmlEscape($user['avatar']);?>">
                             <div class="input-group--customize mt-4">
                                 <label for="avatar_file" class="form-label form-label--file"><i class="fa-solid fa-image"></i> Upload new avatar</label>
-                                <input type="file" id="avatar_file" name="avatar_file" class="d-none">
                             </div>
                         </div>    
+                    </div>
+
+                    <div class="input-group--customize mt-4">
+                        <input type="file" id="avatar_file" name="avatar_file" class="form-control">
                     </div>
 
                     <div class="input-group--customize mt-4">

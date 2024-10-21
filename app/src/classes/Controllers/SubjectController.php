@@ -20,7 +20,20 @@ class SubjectController {
         ]);
     }
 
-    public function showDetailSubjectPage() {
-        
+    public function showSubjectDetailPage() {
+        $subjectCode = getLastPath();
+
+        $subjectModel = new SubjectModel();
+        $subject = $subjectModel->getOne($subjectCode);
+
+        // Cần lấy thêm Note + Student
+
+        renderPage('/sites/subject-detail.php', [
+            'subject' => $subject
+        ]);
+    }
+
+    public function showCudPage() {
+
     }
 }

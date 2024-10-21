@@ -19,6 +19,10 @@ function getPrefixUrl(): string {
     return explode('/', $uri)[1];
 }
 
+function getLastPath(): string {
+    return basename($_SERVER['REQUEST_URI']);
+}
+
 
 function htmlEscape(string|null $string): string {
     if (!$string) {
