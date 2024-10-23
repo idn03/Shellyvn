@@ -1,7 +1,19 @@
 <?php
     $showToast = 'd-none';
-    if (isset($_SESSION['status']) && ($_SESSION['status'] === 'failed')) {
+    $status = '';
+    $title = '';
+    if (isset($_SESSION['status'])) {
         $showToast = '';
+
+        if ($_SESSION['status'] == 'success') {
+            $status = 'success';
+            $title = 'Great';
+        }
+
+        if ($_SESSION['status'] == 'failed') {
+            $status = 'error';
+            $title = 'Error';
+        }
     }
 ?>
 
@@ -15,6 +27,8 @@
     }
 
     .toast-container {
+        min-width: 200px;
+        max-width: 280px;
         display: flex;
         background: #fff;
         
@@ -66,16 +80,20 @@
     .toast--error {
         border-color: #FF6464;
     }
+
+    .toast--success {
+        border-color: #D7E5CA;
+    }
 </style>
 
 <div id="toast" class="<?= $showToast; ?>">
-    <div class="d-flex toast-container toast--error">
+    <div class="d-flex toast-container toast--<?= $status ?>">
         <div class="toast__text">
-            <h3>Error!!!</h3>
+            <h3><?= $title ?>!</h3>
             <?= htmlEscape($_SESSION['message']) ?>
         </div>
         <div class="toast__close">
-            <i onclick="closeToast" class="fa-solid fa-xmark"></i>
+            <i onclick="closeToast()" class="fa-solid fa-xmark" style="color: #333;"></i>
         </div>
     </div>
 </div>

@@ -183,14 +183,14 @@ $$
 
 -- Procedures of Ghi_chu
 DELIMITER $$
-    drop procedure if exists getAllGhiChu $$
-    create procedure getAllGhiChu()
+    drop procedure if exists getAllGhiChuInMon $$
+    create procedure getAllGhiChuInMon(in _ma_mon varchar(10))
     begin
         select *
-        from ghi_chu;
+        from ghi_chu
+        where ma_mon = _ma_mon;
     end $$
 $$
-call getAllGhiChu();
 
 DELIMITER $$
     drop procedure if exists addGhiChu $$
@@ -202,21 +202,11 @@ DELIMITER $$
 $$
 
 DELIMITER $$
-    drop procedure if exists editGhiChu $$
-    create procedure editGhiChu(in _stt_ghichu int(10),  in _noidung_ghichu text)
-    begin
-        update ghi_chu
-        set  noidung_ghichu = _noidung_ghichu
-        where _stt_ghichu = stt_ghichu;
-    end
-$$
-
-DELIMITER $$
     drop procedure if exists deleteGhiChu $$
     create procedure deleteGhiChu(in _stt_ghichu int(10))
     begin
         delete from ghi_chu
-        where _stt_ghichu = stt_ghichu;
+        where stt_ghichu = _stt_ghichu;
     end
 $$
 

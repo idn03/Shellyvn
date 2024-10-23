@@ -1,8 +1,7 @@
 /* Variables */
 :root {
-    /* Text Color */
+    /* Color */
     --normal-color: #333;
-
     --shadow-color: #00000040;
 
 
@@ -99,6 +98,7 @@
     .space-top {padding-top: 48px;}
     .space-bot {padding-bottom: 48px;}
     .tab {margin-left: 24px;}
+    .tab-2 {margin-left: 60px;}
     .path-tree {
         width: 220px;
         position: absolute;

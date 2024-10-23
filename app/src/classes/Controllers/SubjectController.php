@@ -1,7 +1,7 @@
 <?php
 
 namespace App\controllers;
-use App\models\{UserModel, SubjectModel};
+use App\models\{SubjectModel, NoteModel};
 use PDOException;
 
 class SubjectController {
@@ -26,14 +26,18 @@ class SubjectController {
         $subjectModel = new SubjectModel();
         $subject = $subjectModel->getOne($subjectCode);
 
-        // Cần lấy thêm Note + Student
+        $noteModel = new NoteModel();
+        $notes = $noteModel->getAll($subjectCode);
+
+        // Cần lấy thêm Student
 
         renderPage('/sites/subject-detail.php', [
-            'subject' => $subject
+            'subject' => $subject,
+            'notes' => $notes
         ]);
     }
 
     public function showCudPage() {
-
+        
     }
 }

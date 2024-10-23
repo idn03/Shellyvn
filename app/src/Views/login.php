@@ -161,3 +161,5 @@ if (isset($_GET['code'])) {
     });
 </script>
 </html>
+
+<?php removeFromSession('status'); ?>

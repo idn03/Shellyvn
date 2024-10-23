@@ -77,7 +77,8 @@ class AuthController {
 	public function logout() {
 		removeFromSession('user');
 		redirectTo('/login', [
-			'status' => 'success'
+			'status' => 'success',
+			'message' => 'You are logged out, see you later'
 		]);
 	}
 }
