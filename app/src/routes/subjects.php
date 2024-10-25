@@ -17,7 +17,7 @@ $router->mount('/subjects', function () use ($router) {
     $router->get('/{subject}/edit','SubjectController@showCudPage');
     $router->post('/{subject}/edit','SubjectController@edit');
 
-    $router->before('GET|DELETE', '/{subject}/delete', function () {
+    $router->before('GET|POST', '/{subject}/delete', function () {
         isAdmin();
     });
     $router->get('/{subject}/delete','SubjectController@showCudPage');

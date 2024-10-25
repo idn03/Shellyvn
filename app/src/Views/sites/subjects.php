@@ -1,8 +1,9 @@
 <?php
     $displayConstraint = 'd-none';
+    $subjectCode = basename($_SERVER['REQUEST_URI']);
+    
     if (isAdmin()) $displayConstraint = '';
 
-    $subjectCode = basename($_SERVER['REQUEST_URI']);
 ?>
 
 <!DOCTYPE html>
@@ -166,13 +167,21 @@
                             <div>
                                 <p class="card-text"><i class="fa-solid fa-user"></i> Students: ...</p>
                                 <p class="card-text"><i class="fa-solid fa-clock"></i> Started at: <?=htmlEscape(formatDate($subject['ngaybd'])) ?></p>
-                                <p class="card-text"><i class="fa-solid fa-note-sticky"></i> Notes: ...</p>
+                                <p class="card-text"><i class="fa-solid fa-note-sticky"></i> Notes: 
+                                    <?= $_SESSION[(String)$subject['ma_mon']]['note'] ?>
+                                </p>
                             </div>
                             <a href="/subjects/<?= htmlEscape($subject['ma_mon']) ?>"><button class="card__btn"><i class="fa-solid fa-angles-right"></i></button></a>
                         </div>
                     </div>
                 </section>
             <?php endforeach; ?>   
+
+            <?php if (count($subjects) == 0): ?>
+                <center>
+                    <?php require __DIR__ . '/../partials/empty-state.php'; ?>
+                </center>
+            <?php endif ?>
         </div>
     </main>
     

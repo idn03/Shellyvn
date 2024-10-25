@@ -15,6 +15,13 @@ class SubjectController {
             $subjects = $subjectModel->getBySomeOne($_SESSION['user']['taikhoan']);
         }
 
+        foreach ($subjects as $subject) {
+            $noteModel = new NoteModel();
+            $notes = $noteModel->getAll($subject['ma_mon']);
+
+            $_SESSION[$subject['ma_mon']]['note'] = count($notes);
+        }
+
         renderPage('/sites/subjects.php', [
             'subjects'=> $subjects
         ]);

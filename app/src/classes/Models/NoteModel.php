@@ -10,7 +10,7 @@ class NoteModel {
 		$this->pdo = PDOFactory::connect();
 	}
 
-    public function getAll($subjectCode): array {
+    public function getAll(String $subjectCode): array {
 		$preparedStmt = 'call getAllGhiChuInMon(:ma_mon)';
 		$statement = $this->pdo->prepare($preparedStmt);
         $statement->bindParam(':ma_mon', $subjectCode, PDO::PARAM_STR);

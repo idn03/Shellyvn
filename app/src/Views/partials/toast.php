@@ -27,13 +27,13 @@
     }
 
     .toast-container {
-        min-width: 200px;
-        max-width: 280px;
+        min-width: 240px;
+        max-width: 300px;
         display: flex;
         background: #fff;
         
         margin: 8px 0;
-        border-left: 4px solid;
+        border-left: 6px solid;
         padding: 8px;
         
         border-radius: 4px;
@@ -67,12 +67,12 @@
 
     .toast__text {
         flex-grow: 1;
-        color: #888;
+        color: var(--normal-color);
 
         padding: 0 16px;
     }
     .toast__text h3 { 
-        color: #333; 
+        color: var(--normal-color); 
         text-shadow: none;
     }
 

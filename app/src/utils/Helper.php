@@ -56,9 +56,12 @@ function isAdmin(): bool {
 function formatDate(string $date): string {
     return date('d M Y', strtotime($date));
 }
-function getOnceFromSession(string $key): string
-{
+function getOnceFromSession(string $key): string {
     $value = $_SESSION[$key] ?? '';
     unset($_SESSION[$key]);
     return htmlEscape($value);
+}
+
+function isFull(int $max, int $current): bool {
+    return $current === $max;
 }

@@ -1,12 +1,25 @@
 <?php
     $toolBox = '';
+    $disableBtn = '';
+    $canAddNote = '';
+    $canDeleteNote = 'data-bs-toggle="modal" data-bs-target="#deleteNote"';
 
     if (isAdmin()) {
-        $toolBox = '<button class="tools__delete"><i class="fa-solid fa-trash-can"></i></button>';
+        $toolBox = '
+            <button class="tools__delete" data-bs-toggle="modal" data-bs-target="#deleteSubject">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        ';
+        $canAddNote = 'd-none';
+        $canDeleteNote = '';
+
+        require __DIR__ . '/../modals/delete-subject.php';
     }
     else {
         $toolBox = '<a href="/contact"><button class="tools__debug"><i class="fa-solid fa-bug"></i></button></a>';
     }
+
+    if (isFull(3, count($notes))) $disableBtn = 'disabled';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -105,6 +118,7 @@
     .btn--add-note:hover i {color: #D7E5CA;}
 
     #notes {
+        <?php if (count($notes) == 0) echo 'justify-content: center;'; ?>
         margin: 12px 24px;
         padding: 24px;
 
@@ -131,17 +145,7 @@
             border-radius: var(--bo-m);
             box-shadow: 0px 4px 4px var(--shadow-color);
 
-            transition: transform 1s ease-out, opacity 1s ease-out;
-        }
-        
-        .container--note.float-out {
-            transform: translateY(100px);
-            opacity: 0;
-        }
-
-        .img--clip.float-out {
-            transform: translateY(-30px);
-            opacity: 0;
+            cursor: pointer;
         }
 
             .note__circles {
@@ -158,7 +162,7 @@
             .note__content {
                 max-width: 240px;
 
-                padding: 16px;
+                padding: 24px 16px;
             }
             .note__content p {color: #333; font-size: 18px;}
 
@@ -175,7 +179,9 @@
             <h3>Path Tree:</h3>
             <a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
             <a href="/subjects" class="nav-link tab"><i class="fa-solid fa-list"></i> Subjects List</a>
-            <a href="/subjects/<?= $subject['ma_mon'] ?>" class="nav-link tab-2"><i class="fa-solid fa-arrow-turn-up"></i> <?= $subject['ma_mon'] ?></a>
+            <a href="/subjects/<?= $subject['ma_mon'] ?>" class="nav-link tab-2">
+                <i class="fa-solid fa-arrow-turn-up"></i> <?= $subject['ma_mon'] ?>
+            </a>
         </section>
 
         <section class="row justify-content-center space-bot">
@@ -204,7 +210,7 @@
 
                         <p class="tab"><i class="fa-solid fa-user"></i> Students: ...</p>
 
-                        <p class="tab"><i class="fa-solid fa-note-sticky"></i> Notes: <?= htmlEscape(count($notes)) ?></p>
+                        <p class="tab"><i class="fa-solid fa-note-sticky"></i> Notes: <?= count($notes) ?></p>
                     </div>
 
                     <div class="tools">
@@ -218,49 +224,72 @@
 
         <section class="space-bot">
             <div class="d-flex space-top" style="justify-content: space-between;">
-                <h1>NOTES (0/3)</h1>
-                <button class="btn--add-note"><i class="fa-solid fa-plus"></i> Add note</button>
+                <h1>NOTES (<?= count($notes) ?>/3)</h1>
+                <button 
+                    class="btn--add-note <?= $canAddNote ?>" 
+                    <?= $disableBtn ?>
+                >
+                    <i class="fa-solid fa-plus"></i> 
+                    Add note
+                </button>
             </div>
 
-            <?php if (count($notes) > 0): ?>
-                <div id="notes" class="d-flex">
-                    <?php foreach ($notes as $note): ?>
-                    <div class="container--note">
-                        <img src="/imgs/icons/clip.png" class="img--clip" height="48px" alt="">
-                        <div class="d-flex">
-                            <div>
-                                <div class="note__circles"></div>
-                                <div class="note__circles"></div>
-                                <div class="note__circles"></div>
-                                <div class="note__circles"></div>
-                            </div>
+            <div id="notes" class="d-flex">
+                <?php foreach ($notes as $note): ?>
+                <div 
+                    class="container--note" 
+                    <?= $canDeleteNote ?> 
+                    data-value="<?= $note['stt_ghichu']; ?>" 
+                    onclick="setNoteSeq(this)"
+                >
 
-                            <div class="note__content">
-                                <p><?= htmlEscape($note['noidung_ghichu']); ?></p>
-                            </div>
+                    <img src="/imgs/icons/clip.png" class="img--clip" height="48px" alt="">
+                    <div class="d-flex">
+                        <div>
+                            <div class="note__circles"></div>
+                            <div class="note__circles"></div>
+                            <div class="note__circles"></div>
+                            <div class="note__circles"></div>
+                        </div>
+
+                        <div class="note__content">
+                            <p><?= htmlEscape($note['noidung_ghichu']); ?></p>
                         </div>
                     </div>
-                    <?php endforeach; ?>
                 </div>
-            <?php endif ?>
-            
-            <?php if (count($notes) == 0): ?>
-                <center id="notes">
-                    <?php require __DIR__ . '/../partials/empty.php'; ?>
-                </center>
-            <?php endif ?>
+                <?php endforeach; ?>
+
+                <?php if (count($notes) == 0): ?>
+                    <?php require __DIR__ . '/../partials/empty-state.php'; ?>
+                <?php endif ?>
+            </div>
         </section>
 
         <section>
             <div class="row">
-                <h1>Students & Chart</h1>
+                <div class="d-flex space-top" style="justify-content: space-between;">
+                    <h1>STUDENTS</h1>
+                    <h1>CHART</h1>
+                </div>
+                
                 <div class="col-lg-8">
-                    <table>
+                    <table class="table table-borderless">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>Name</th>
+                                <th>Phone number</th>
+                                <th>Gender</th>
+                                <th>Educational level</th>
                             </tr>
                         </thead>
+                        <tbody>
+                        <tr>
+                            <td>Mark</td>
+                            <td>090 101 43 68</td>
+                            <td>Male</td>
+                            <td>Highschool Student</td>
+                        </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -268,22 +297,14 @@
     </main>
 
     <?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../modals/delete-note.php'; ?>
 </body>
 
 <script>
-    const notes = document.querySelectorAll('.container--note');
-    const clips = document.querySelectorAll('.img--clip');
+    function setNoteSeq(element) {
+        var noteValue = element.getAttribute('data-value');
 
-    notes.forEach((note, index) => {
-    note.addEventListener('click', function() {
-        note.classList.add('float-out');
-        clips[index].classList.add('float-out');
-
-        setTimeout(function() {
-            note.classList.add('hidden');
-            clips[index].classList.add('hidden');
-        }, 1000);
-    });
-});
+        document.getElementById('noteSeq').value = noteValue;
+    }
 </script>
 </html>

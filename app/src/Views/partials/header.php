@@ -12,35 +12,22 @@
     #header a,p,i {
         color: #F9F3CC;
     }
-    
-    @keyframes slideIn {
-        from {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
 
-    @keyframes slideOut {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(-100%);
-            opacity: 0;
-        }
-    }
-
-    .show {
-        animation: slideIn 0.5s forwards;
+    #header__nav,
+    #header__extra {
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     .hide {
-        animation: slideOut 0.5s forwards;
+        transform: translateX(-100%) !important;
+        opacity: 0 !important;
+    }
+
+    .show {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
     }
 
         /* Header Logo */
@@ -84,7 +71,7 @@
     <div class="col-lg-1" style="z-index: 1;">
         <img id="header__logo" src="/imgs/shelly-logo.png" height="48px" alt="">
     </div>
-    <nav id="header__nav" class="col-lg-7 show">
+    <nav id="header__nav" class="col-lg-7">
         <ul class="nav-list d-flex">
             <li><a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
             <li><a href="/subjects" class="nav-link"><i class="fa-solid fa-list"></i> Subjects List</a></li>
@@ -93,7 +80,7 @@
         </ul>
     </nav>
 
-    <div id="header__extra" class="col-lg-3 d-flex show">
+    <div id="header__extra" class="col-lg-3 d-flex">
         <p class="extra__username"><i><?= $_SESSION['user']['taikhoan'] ?></i></p>
         <a href="/logout"><button class="extra__log-out-btn">Log out</button></a>
     </div>
@@ -119,5 +106,15 @@
             extra.classList.add('show');
         }
         isVisible = !isVisible;
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const nav = document.getElementById('header__nav');
+        const extra = document.getElementById('header__extra');
+
+        setTimeout(() => {
+            nav.classList.add('show');
+            extra.classList.add('show');
+        }, 100);
     });
 </script>
