@@ -227,6 +227,8 @@
                 <h1>NOTES (<?= count($notes) ?>/3)</h1>
                 <button 
                     class="btn--add-note <?= $canAddNote ?>" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#addNote"
                     <?= $disableBtn ?>
                 >
                     <i class="fa-solid fa-plus"></i> 
@@ -296,7 +298,11 @@
         </section>
     </main>
 
+    <?php require __DIR__ . '/../partials/toast.php'; ?>
+
     <?php require __DIR__ . '/../partials/footer.php'; ?>
+
+    <?php require __DIR__ . '/../modals/add-note.php'; ?>
     <?php require __DIR__ . '/../modals/delete-note.php'; ?>
 </body>
 
@@ -308,3 +314,5 @@
     }
 </script>
 </html>
+
+<?php removeFromSession('status'); ?>

@@ -10,8 +10,8 @@
             </div>
             <div class="modal-footer">
                 <form action="/deleteNote" method="post">
-                    <input type="hidden" name="noteSeq" id="noteSeq">
-                    <input type="hidden" name="subjectCode" value="<?= $subject['ma_mon'] ?>">
+                    <input type="hidden" name="stt_ghichu" id="noteSeq">
+                    <input type="hidden" name="ma_mon" value="<?= $subject['ma_mon'] ?>">
                     <button type="submit" class="btn--delete">Delete</button>
                 </form>
             </div>

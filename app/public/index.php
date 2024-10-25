@@ -20,6 +20,9 @@ use Bramus\Router\Router;
         // Profile Page Router
         require_once __DIR__ . '/../src/routes/edit-profile.php';
 
+        // Note Operations Router
+        require_once __DIR__ . '/../src/routes/note.php';
+
         $router->get('/logout', 'AuthController@logout');
     }
     

@@ -1,7 +1,6 @@
 <style>
     .form-container__label { margin-top: 40px; }
-    #problems,
-    #description {
+    #problems {
         margin-top: 16px;
         padding: 18px;
         border: none;
@@ -9,10 +8,9 @@
         border-radius: var(--bo-l);
     }
 
-    #description {
-        min-height: 200px;
-        border-radius: var(--bo-l) var(--bo-l) 4px var(--bo-l);
-        box-shadow: 0px 4px 4px var(--shadow-color);
+    .form__textarea {
+        display: block;
+        width: 100%;
     }
 </style>
 
@@ -27,7 +25,7 @@
         </select>
 
         <label for="description" class="space-top">Please describe your problem</label>
-        <textarea name="des" id="description" placeholder="Type here..." class="form-control"></textarea>
+        <textarea name="des" id="description" class="form__textarea" placeholder="Type here..." class="form-control"></textarea>
 
         <div class="text-center">
             <button type="submit">SEND</button>

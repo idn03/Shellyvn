@@ -26,7 +26,7 @@ class NoteModel {
 		$statement->execute();
     }
 
-    public function delete(String $subjectcode, int $seq) {
+    public function delete(int $seq) {
         $preparedStmt = 'call deleteGhiChu(:stt_ghichu)';
 		$statement = $this->pdo->prepare($preparedStmt);
 		$statement->bindParam(':stt_ghichu', $seq, PDO::PARAM_STR);
