@@ -19,4 +19,7 @@ call addGhiChu('Give a gift to all students', 'SH002');
 call addGhiChu('Update lesson plans before 10/10/2024', 'SH002');
 call addGhiChu('@@ Nothing', 'SH002');
 
+call addThanhTuu('3rd place in the "Best AI Application in the Security Field" Award', '2024-01-08', 'Awarded for the SmartCam Insight project, this recognition would celebrate the development of a security-oriented AI system capable of real-time analysis and anomaly detection in video feeds.', 'sea.png', 'nhatnam_0955');
+call addThanhTuu('Developing the Smart Video Analysis System project (SmartCam Insight)', '2016-05-22', 'SmartCam Insight is a real-time video analytics system designed for businesses and security organizations.', 'whale.png', 'nhatnam_0955');
+
 call addHocVien('0901014368', 'Le Hong Van', 0, 'Highschool Student');

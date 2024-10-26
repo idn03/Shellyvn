@@ -105,6 +105,12 @@
             <button class="edit-btn"><i class="fa-solid fa-user-pen"></i> Edit Profile</button>
         </a>
 
+        <section>
+            <?php foreach ($archivements as $archivement): ?>
+                <p><?= htmlEscape($archivement['icon']) ?></p>
+            <?php endforeach; ?>
+        </section>
+
         <section id="calendar" class="text-center space-top">
             <h1><i class="fa-regular fa-calendar"></i> Calendar & Schedule</h1>
             <iframe src="https://embed.styledcalendar.com/#XsXh7FddP0Q5jLKweBGw" 
