@@ -279,9 +279,10 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Phone number</th>
+                                <th>Phone</th>
                                 <th>Gender</th>
                                 <th>Educational level</th>
+                                <th class="text-center">Score</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -290,6 +291,7 @@
                             <td>090 101 43 68</td>
                             <td>Male</td>
                             <td>Highschool Student</td>
+                            <td class="text-center">5 / 10</td>
                         </tr>
                         </tbody>
                     </table>

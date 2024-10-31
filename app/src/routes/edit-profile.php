@@ -1,6 +1,10 @@
 <?php
 
-$router->get('/profile', 'UserController@showProfilePage');
+$router->mount('/profile', function () use ($router) {
+    $router->get('/', 'UserController@showProfilePage');
 
-$router->post('/profile/edit-info', 'UserController@editInfo');
-$router->post('/profile/change-password', 'UserController@changePassword');
+    $router->post('/edit-info', 'UserController@editInfo');
+    $router->post('/change-password', 'UserController@changePassword');
+
+    $router->post('/addArchivement','UserController@addArchivement');
+});

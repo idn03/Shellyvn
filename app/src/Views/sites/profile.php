@@ -41,11 +41,11 @@
         }
 
     /* Archivements */
-    .archive-container {
+    .archives-container {
         padding: 32px;
     }
 
-    .archive-icon {
+    .add-archive-icon {
         background-color: #D2E0FB80;
 
         display: flex;
@@ -58,11 +58,11 @@
 
         text-decoration: none;
     }
-    .archive-icon:hover {
+    .add-archive-icon:hover {
         cursor: pointer;
     }
 
-    .archive-icon i {
+    .add-archive-icon i {
         align-self: center;
         
         font-size: 24px;
@@ -70,10 +70,28 @@
         margin: 0;
     }
 
-    .archive-content {
+    .add-archive-content {
         margin: 18px 0px 0px 18px;
     }
-    .archive-content p {color: #33333380;}
+    .archivement-container p, 
+    .add-archive-content p {color: #33333380;}
+
+    .archivement-container {
+        align-items: center;
+        margin: 32px 0px;
+    }
+
+        .archivement__icon {
+            align-self: flex-start;
+            background-color: #55679C80;
+            
+            margin-right: 16px;
+            padding: 8px;
+
+            border-radius: var(--bo-m);
+            box-shadow: 0px 4px 4px var(--shadow-color);
+        }
+
 
 </style>
 
@@ -170,17 +188,30 @@
 
             <section class="col-lg-6">
                 <h3 class="text-center">Archivements</h3>
-                <div class="archive-container">
-                    <div class="d-flex">
-                        <a class="archive-icon" href="/profile/archivements/add">
+                <div class="archives-container">
+                    <div class="d-flex mb-4">
+                        <div class="add-archive-icon" data-bs-toggle="modal" data-bs-target="#addArchivement">
                             <i class="fa-solid fa-plus"></i>
-                        </a>
+                        </div>
 
-                        <div class="archive-content">
+                        <div class="add-archive-content">
                             <h5>Add New Archivement</h5>
                             <p class="tab">Achievements can be awards, certificates, your products or projects, etc.</p>
                         </div>
                     </div>
+
+                    <hr>
+
+                    <?php foreach ($archivements as $archivement): ?>
+                        <div class="d-flex archivement-container">
+                            <img src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" height="64px" class="archivement__icon" alt="">
+                            
+                            <div class="archivement__content">
+                                <h5><?= htmlEscape($archivement['tenthanhtuu']) ?></h5>
+                                <p class="tab"><?= htmlEscape($archivement['mota']) ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
         </div>
@@ -188,6 +219,8 @@
     </main>
 
     <?php require __DIR__ . '/../partials/footer.php'; ?>
+
+    <?php require __DIR__ . '/../modals/add-archivement.php'; ?>
 </body>
 </html>
 

@@ -32,7 +32,6 @@ class ArchiveModel {
         $preparedStmt = 'call addThanhTuu(:tenthanhtuu, :ngaycap, :mota, :icon, :taikhoan)';
 		$statement = $this->pdo->prepare($preparedStmt);
 		$statement->bindParam(':tenthanhtuu', $data['tenthanhtuu'], PDO::PARAM_STR);
-		$statement->bindParam(':tenmon', $data['tenmon'], PDO::PARAM_STR);
 		$statement->bindParam(':ngaycap', $data['ngaycap'], PDO::PARAM_STR);
         $statement->bindParam(':mota', $data['mota'], PDO::PARAM_STR);
         $statement->bindParam(':icon', $data['icon'], PDO::PARAM_STR);

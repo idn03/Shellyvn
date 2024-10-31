@@ -6,6 +6,7 @@
         border: none;
         
         border-radius: var(--bo-l);
+        box-shadow: 0px 4px 4px var(--shadow-color);
     }
 
     .form__textarea {
@@ -25,10 +26,16 @@
         </select>
 
         <label for="description" class="space-top">Please describe your problem</label>
-        <textarea name="des" id="description" class="form__textarea" placeholder="Type here..." class="form-control"></textarea>
+        <textarea name="des" id="description" class="form__textarea" placeholder="Type here..." class="form-control" required></textarea>
 
         <div class="text-center">
             <button type="submit">SEND</button>
         </div>
     </form>
 </section>
+
+<?php 
+require __DIR__ . '/../../partials/toast.php';
+
+removeFromSession('status');
+?>

@@ -1,16 +1,20 @@
 <?php
 
 namespace App\controllers;
-use App\models\{UserModel};
+use App\models\{UserModel, ArchiveModel};
 use PDOException;
 
 class UserController {
     public function showProfilePage() {
         $userModel = new UserModel();
 		$user = $userModel->getOne($_SESSION['user']['taikhoan']);
+
+        $archiveModel = new ArchiveModel();
+        $archivements = $archiveModel->getBySomeOne($_SESSION['user']['taikhoan']);
         
         renderPage('/sites/profile.php', [
-            'user'=> $user
+            'user'=> $user,
+            'archivements' => $archivements
         ]);
     }
 
@@ -50,6 +54,36 @@ class UserController {
             redirectTo('/profile', [
                 'status' => 'success',
                 'message' => 'Your profile has been updated successfully'
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/profile', [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}
+    }
+
+    public function addArchivement() {
+        $archiveModel = new ArchiveModel();
+        $data = [];
+        $data['tenthanhtuu'] = $_POST['tenthanhtuu'];
+        $data['ngaycap'] = $_POST['ngaycap'];
+        $data['mota'] = $_POST['mota'];
+        $data['icon'] = $_POST['icon'];
+        $data['taikhoan'] = $_POST['taikhoan'];
+
+        try {
+            $archiveModel->create([
+                'tenthanhtuu' => $data['tenthanhtuu'],
+                'ngaycap' => $data['ngaycap'],
+                'mota' => $data['mota'],
+                'icon' => $data['icon'],
+                'taikhoan' => $data['taikhoan'],
+            ]);
+
+            redirectTo('/profile', [
+                'status' => 'success',
+                'message' => 'Archivement unlocked'
             ]);
         } catch (PDOException $e) {
 			redirectTo('/profile', [

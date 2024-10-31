@@ -52,10 +52,26 @@
         }
 
         .edit-btn i { color: #333; }
-        
-    #calendar {
-
+    
+    .archivement-container {
+        align-items: center;
+        margin: 32px 12px;
     }
+    .archivement-container h3 {max-width: 400px;}
+    .archivement-container p {opacity: 0.8;}
+
+        .archivement__icon {
+            background-color: #55679C80;
+            
+            margin-right: 16px;
+            padding: 8px;
+
+            border-radius: var(--bo-m);
+            box-shadow: 0px 4px 4px var(--shadow-color);
+        }
+
+        
+    #calendar {}
 
         .styled-calendar-container {
             height: 699.1px;
@@ -107,7 +123,14 @@
 
         <section>
             <?php foreach ($archivements as $archivement): ?>
-                <p><?= htmlEscape($archivement['icon']) ?></p>
+                <div class="d-flex archivement-container">
+                    <img src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" height="64px" class="archivement__icon" alt="">
+                    
+                    <div class="archivement__content">
+                        <h5><?= htmlEscape($archivement['tenthanhtuu']) ?></h5>
+                        <p class="tab"><?= htmlEscape($archivement['mota']) ?></p>
+                    </div>
+                </div>
             <?php endforeach; ?>
         </section>
 

@@ -8,13 +8,11 @@ $router->mount('/subjects', function () use ($router) {
     $router->before('GET|POST', '/add', function () {
         isAdmin();
     });
-    $router->get('/add','SubjectController@showCudPage');
     $router->post('/add','SubjectController@create');
 
     $router->before('GET|POST', '/{subject}/edit', function () {
         isAdmin();
     });
-    $router->get('/{subject}/edit','SubjectController@showCudPage');
     $router->post('/{subject}/edit','SubjectController@edit');
 
     $router->before('GET|POST', '/{subject}/delete', function () {

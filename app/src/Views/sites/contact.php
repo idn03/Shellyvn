@@ -29,7 +29,7 @@ if (isAdmin()) { $contactPath = 'contact-admin.php'; }
             <a href="/contact" class="nav-link tab"><i class="fa-solid fa-address-book"></i> Contact</a>
         </section>
 
-        <h1 class="text-center"><i class="fa-solid fa-address-book"></i> CONTACT</h1>
+        <h1 class="text-center"><i class="fa-solid fa-address-book"></i> Contact</h1>
 
         <section class="text-center user-info">
             
