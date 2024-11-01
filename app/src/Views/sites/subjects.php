@@ -82,6 +82,7 @@
     
     /* Subject Card */
     .subject-card {
+        position: relative;
         margin: 32px;
         border: none;
         padding: 0;
@@ -90,6 +91,16 @@
         box-shadow: 0px 4px 4px var(--shadow-color);
     }
     .subject-card .card-img-top { border-radius: var(--bo-l) var(--bo-l) 0px 0px; height: 300px;}
+
+        .marked-icon {
+            font-size: 40px;
+            text-shadow: 0px 4px 4px var(--shadow-color);
+            
+            position: absolute;
+            top: -4px;
+            right: 48px;
+            z-index: 1;
+        }
 
         .card-title {
             position: absolute;
@@ -159,6 +170,7 @@
         <div class="row">
             <?php foreach ($subjects as $subject): ?>
                 <section class="col-lg-5 card subject-card">
+                    <i class="fa-solid fa-bookmark marked-icon <?= $subject['ghim'] != 1 ? 'd-none' : '' ?>"></i>
                     <img src="/imgs/covers/<?= htmlEscape($subject['cover']) ?>" class="card-img-top" alt="...">
                     <h3 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h3>
                     <div class="card-body">

@@ -1,6 +1,11 @@
 <?php
     $toolBox = '';
     $disableBtn = '';
+    
+    $isMarked = '';
+    $isMarkedMessage = 'Unmark from important';
+    $isMarkedNav = 'unmark';
+    
     $canAddNote = '';
     $canDeleteNote = 'data-bs-toggle="modal" data-bs-target="#deleteNote"';
 
@@ -17,6 +22,12 @@
     }
     else {
         $toolBox = '<a href="/contact"><button class="tools__debug"><i class="fa-solid fa-bug"></i></button></a>';
+    }
+
+    if ($subject['ghim'] != 1) {
+        $isMarked = 'd-none';
+        $isMarkedMessage = 'Mark as important';
+        $isMarkedNav = 'mark';
     }
 
     if (isFull(3, count($notes))) $disableBtn = 'disabled';
@@ -74,98 +85,6 @@
     }
         .subject-info h3 {margin: 24px 8px;}
         .subject-info p, .subject-info i {color: #333;}
-
-    .tools {
-        display: flex;
-        flex-direction: column;
-    }
-    .tools button {
-        padding: 16px;
-        margin: 0px;
-        margin-top: 32px;
-
-        border-radius: 0px 30px 30px 0px;
-    }
-
-    .btn--add-note i,
-    .btn--mark i,
-    .tools i {
-        color: #333;
-        transition: all 0.5s;
-    }
-
-        .tools__edit {            
-            background-color: #D2E0FB;
-        }
-        .tools__edit:hover {background-color: #333;}
-        .tools__edit:hover i {color: #D2E0FB;}
-
-        .tools__delete {            
-            background-color: #F87A53;
-        }
-        .tools__delete:hover {background-color: #333;}
-        .tools__delete:hover i {color: #F87A53;}
-
-        .tools__debug {
-            background-color: #7E60BF;
-        }
-        .tools__debug:hover {background-color: #333;}
-        .tools__debug:hover i {color: #7E60BF;}
-
-    .btn--add-note {
-        margin: 24px 60px;
-    }
-    .btn--add-note:hover i {color: #D7E5CA;}
-
-    #notes {
-        <?php if (count($notes) == 0) echo 'justify-content: center;'; ?>
-        margin: 12px 24px;
-        padding: 24px;
-
-        border-radius: var(--bo-l);
-        box-shadow: inset 0px 4px 4px var(--shadow-color);
-    }
-
-        .img--clip {
-            position: absolute;
-            right: 12px;
-            top: -20px;
-
-            transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-        }
-
-        .container--note {
-            position: relative;
-            min-height: 120px;
-            background-color: #fff;
-
-            padding: 8px;
-            margin: 12px 24px;
-
-            border-radius: var(--bo-m);
-            box-shadow: 0px 4px 4px var(--shadow-color);
-
-            cursor: pointer;
-        }
-
-            .note__circles {
-                height: 24px;
-                width: 24px;
-                background-color: #8EACCD;
-
-                margin: 24px 4px;
-
-                border-radius: 50%;
-                box-shadow: inset 0px 4px 4px var(--shadow-color);
-            }
-
-            .note__content {
-                max-width: 240px;
-
-                padding: 24px 16px;
-            }
-            .note__content p {color: #333; font-size: 18px;}
-
 </style>
 
 <body id="top">
@@ -175,6 +94,7 @@
     
     <main id="subject-detail-page">
         <h1><?= htmlEscape($subject['ma_mon']) ?></h1>
+        <!-- PATH TREE -->
         <section class="path-tree">
             <h3>Path Tree:</h3>
             <a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a>
@@ -184,12 +104,19 @@
             </a>
         </section>
 
+        <!-- SUBJECT INFO -->
         <section class="row justify-content-center space-bot">
-            <div class="col-lg-6" style="position: relative;">
-                <i class="fa-solid fa-bookmark marked-icon"></i>
+        <div class="col-lg-6" style="position: relative;">
+                <i class="fa-solid fa-bookmark marked-icon <?= $isMarked ?>"></i>
                 <img class="container__cover" src="/imgs/covers/<?= htmlEscape($subject['cover']); ?>" height="440px" width="100%" alt="">
                 <center>
-                    <button class="btn--mark"><i class="fa-regular fa-bookmark"></i> Mark as important</button>
+                    <button 
+                        class="btn--mark"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#<?= $isMarkedNav ?>Important"
+                    >
+                        <i class="fa-regular fa-bookmark"></i> <?= $isMarkedMessage; ?>
+                    </button>
                 </center>
             </div>
 
@@ -222,81 +149,14 @@
             </div>
         </section>
 
+        <!-- NOTES -->
         <section class="space-bot">
-            <div class="d-flex space-top" style="justify-content: space-between;">
-                <h1>NOTES (<?= count($notes) ?>/3)</h1>
-                <button 
-                    class="btn--add-note <?= $canAddNote ?>" 
-                    data-bs-toggle="modal" 
-                    data-bs-target="#addNote"
-                    <?= $disableBtn ?>
-                >
-                    <i class="fa-solid fa-plus"></i> 
-                    Add note
-                </button>
-            </div>
-
-            <div id="notes" class="d-flex">
-                <?php foreach ($notes as $note): ?>
-                <div 
-                    class="container--note" 
-                    <?= $canDeleteNote ?> 
-                    data-value="<?= $note['stt_ghichu']; ?>" 
-                    onclick="setNoteSeq(this)"
-                >
-
-                    <img src="/imgs/icons/clip.png" class="img--clip" height="48px" alt="">
-                    <div class="d-flex">
-                        <div>
-                            <div class="note__circles"></div>
-                            <div class="note__circles"></div>
-                            <div class="note__circles"></div>
-                            <div class="note__circles"></div>
-                        </div>
-
-                        <div class="note__content">
-                            <p><?= htmlEscape($note['noidung_ghichu']); ?></p>
-                        </div>
-                    </div>
-                </div>
-                <?php endforeach; ?>
-
-                <?php if (count($notes) == 0): ?>
-                    <?php require __DIR__ . '/../partials/empty-state.php'; ?>
-                <?php endif ?>
-            </div>
+            <?php require __DIR__ . '/../partials/subject/notes.php'; ?>
         </section>
 
+        <!-- STUDENTS AND CHART -->
         <section>
-            <div class="row">
-                <div class="d-flex space-top" style="justify-content: space-between;">
-                    <h1>STUDENTS</h1>
-                    <h1>CHART</h1>
-                </div>
-                
-                <div class="col-lg-8">
-                    <table class="table table-borderless">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Phone</th>
-                                <th>Gender</th>
-                                <th>Educational level</th>
-                                <th class="text-center">Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>Mark</td>
-                            <td>090 101 43 68</td>
-                            <td>Male</td>
-                            <td>Highschool Student</td>
-                            <td class="text-center">5 / 10</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <?php require __DIR__ . '/../partials/subject/student-n-chart.php'; ?>
         </section>
     </main>
 
@@ -304,6 +164,9 @@
 
     <?php require __DIR__ . '/../partials/footer.php'; ?>
 
+    <?php require __DIR__ . '/../modals/mark-subject.php'; ?>
+    <?php require __DIR__ . '/../modals/unmark-subject.php'; ?>
+    
     <?php require __DIR__ . '/../modals/add-note.php'; ?>
     <?php require __DIR__ . '/../modals/delete-note.php'; ?>
 </body>

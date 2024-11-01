@@ -156,6 +156,16 @@ DELIMITER $$
 $$
 
 DELIMITER $$
+    drop procedure if exists markMonHoc $$
+    create procedure markMonHoc(in _ma_mon varchar(10),  in _ghim tinyint(1))
+    begin
+        update mon_hoc
+        set  ghim = _ghim
+        where _ma_mon = ma_mon;
+    end
+$$
+
+DELIMITER $$
     drop procedure if exists deleteMonHoc $$
     create procedure deleteMonHoc(in _ma_mon varchar(10))
     begin

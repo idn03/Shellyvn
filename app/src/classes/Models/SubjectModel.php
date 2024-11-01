@@ -58,6 +58,14 @@ class SubjectModel {
 		$statement->execute();
     }
 
+	public function mark(array $data) {
+		$preparedStmt = 'call markMonHoc(:ma_mon, :ghim)';
+		$statement = $this->pdo->prepare($preparedStmt);
+		$statement->bindParam(':ma_mon', $data['ma_mon'], PDO::PARAM_STR);
+		$statement->bindParam(':ghim', $data['ghim'], PDO::PARAM_STR);
+		$statement->execute();
+	}
+
     public function delete(): array {
 		$preparedStmt = 'call getOneMonHoc()';
 		$statement = $this->pdo->prepare($preparedStmt);

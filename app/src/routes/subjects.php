@@ -19,6 +19,9 @@ $router->mount('/subjects', function () use ($router) {
         isAdmin();
     });
     $router->get('/{subject}/delete','SubjectController@showCudPage');
-    $router->delete('/{subject}/delete','SubjectController@delete');
+    $router->post('/{subject}/delete','SubjectController@delete');
+
+    $router->post('/{subject}/markImportant','SubjectController@mark');
+    $router->post('/{subject}/unmarkImportant','SubjectController@mark');
 });
 

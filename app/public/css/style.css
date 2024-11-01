@@ -127,6 +127,47 @@
         opacity: 0.8;
         color: #F9F3CC;
     }
+    .tools {
+        display: flex;
+        flex-direction: column;
+    }
+    .tools button {
+        padding: 16px;
+        margin: 0px;
+        margin-top: 32px;
+
+        border-radius: 0px 30px 30px 0px;
+    }
+
+    .btn--add-note i,
+    .btn--mark i,
+    .tools i {
+        color: #333;
+        transition: all 0.5s;
+    }
+
+        .tools__edit {            
+            background-color: #D2E0FB;
+        }
+        .tools__edit:hover {background-color: #333;}
+        .tools__edit:hover i {color: #D2E0FB;}
+
+        .tools__delete {            
+            background-color: #F87A53;
+        }
+        .tools__delete:hover {background-color: #333;}
+        .tools__delete:hover i {color: #F87A53;}
+
+        .tools__debug {
+            background-color: #7E60BF;
+        }
+        .tools__debug:hover {background-color: #333;}
+        .tools__debug:hover i {color: #7E60BF;}
+
+    .btn--add-note {
+        margin: 24px 60px;
+    }
+    .btn--add-note:hover i {color: #D7E5CA;}
 
     /* Form */
     .form-label--file:hover {cursor: pointer;}

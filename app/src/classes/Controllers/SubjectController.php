@@ -44,8 +44,35 @@ class SubjectController {
         ]);
     }
 
-    public function showCudPage() {
+    public function mark() {
+        $subjectModel = new SubjectModel();
+        $data = [];
+        $data['ma_mon'] = $_POST['ma_mon'];
+        $data['ghim'] = $_POST['ghim'];
         
+        try {
+            $subjectModel->mark([
+                'ma_mon' => $data['ma_mon'],
+                'ghim' => $data['ghim'],
+            ]);
+
+            $message = '';
+            if ((int)$_POST['ghim'] == 1) {
+                $message = $data['ma_mon'] . ' has been marked';
+            } else {
+                $message = $data['ma_mon'] . ' has been unmarked';
+            }
+
+            redirectTo('/subjects/' . $data['ma_mon'], [
+                'status' => 'success',
+                'message' => $message,
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/subjects/' . $data['ma_mon'], [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}
     }
 }
 
