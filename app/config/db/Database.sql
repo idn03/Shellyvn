@@ -23,3 +23,8 @@ call addThanhTuu('3rd place in the "Best AI Application in the Security Field" A
 call addThanhTuu('Developing the Smart Video Analysis System project (SmartCam Insight)', '2016-05-22', 'SmartCam Insight is a real-time video analytics system designed for businesses and security organizations.', 'whale.png', 'nhatnam_0955');
 
 call addHocVien('0901014368', 'Le Hong Van', 0, 'Highschool Student');
+call addHocVien('0932017332', 'Nguyen Minh Tri', 1, 'Highschool Student', 'SH002');
+call addHocVien('0378001962', 'Nguyen Minh Tri', 1, 'Highschool Student', 'SH002');
+call addHocVien('0903114820', 'Dang Thanh An', 1, 'Highschool Student', 'SH002');
+call addHocVien('0911399842', 'Jessica Truong', 0, 'Highschool Student', 'SH002');
+call getAllHocVienInMon('SH002');

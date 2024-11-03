@@ -23,6 +23,9 @@ use Bramus\Router\Router;
         // Note Operations Router
         require_once __DIR__ . '/../src/routes/note.php';
 
+        // Student Operations Router
+        require_once __DIR__ . '/../src/routes/student.php';
+
         $router->get('/logout', 'AuthController@logout');
     }
     

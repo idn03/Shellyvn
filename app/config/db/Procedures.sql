@@ -300,6 +300,17 @@ DELIMITER $$
 $$
 
 DELIMITER $$
+    drop procedure if exists getAllHocVienInMon $$
+    create procedure getAllHocVienInMon(in _ma_mon varchar(10))
+    begin
+        select hv.sdt_hocvien, hv.tenhocvien, hv.gioitinh_hocvien, hv.trinhdo_hocvien, h.diem
+        from hoc_vien hv
+        join hoc h on hv.sdt_hocvien = h.sdt_hocvien
+        where h.ma_mon = _ma_mon;
+    end $$
+$$
+
+DELIMITER $$
     drop procedure if exists getOneHocVien $$
     create procedure getOneHocVien(in _sdt_hocvien varchar(12))
     begin
@@ -311,11 +322,14 @@ $$
 
 DELIMITER $$
     drop procedure if exists addHocVien $$
-    create procedure addHocVien(in _sdt_hocvien varchar(12), in _tenhocvien varchar(50), in _gioitinh_hocvien tinyint(1), in _trinhdo_hocvien varchar(20))
+    create procedure addHocVien(in _sdt_hocvien varchar(12), in _tenhocvien varchar(50), in _gioitinh_hocvien tinyint(1), in _trinhdo_hocvien varchar(20), in _ma_mon varchar(10))
     begin
         insert into hoc_vien(sdt_hocvien, tenhocvien, gioitinh_hocvien, trinhdo_hocvien)
         values(_sdt_hocvien, _tenhocvien, _gioitinh_hocvien, _trinhdo_hocvien);
-    end
+        
+        insert into hoc(sdt_hocvien, ma_mon, diem)
+        values (_sdt_hocvien, _ma_mon, 0);
+    end $$
 $$
 
 DELIMITER $$
@@ -350,4 +364,14 @@ DELIMITER $$
         delete from hoc_vien where sdt_hocvien = _sdt_hocvien;
         commit;
     end
+$$
+
+DELIMITER $$
+    drop procedure if exists graded $$
+    create procedure graded(in _sdt_hocvien varchar(12), in _ma_mon varchar(10), in _diem float)
+    begin
+        update hoc
+        set  diem = _diem
+        where sdt_hocvien = _sdt_hocvien and ma_mon = _ma_mon;
+    end $$
 $$

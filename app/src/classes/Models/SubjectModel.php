@@ -26,11 +26,11 @@ class SubjectModel {
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-    public function getOne(string|null $subjetKey): array|bool {
+    public function getOne(string|null $subjetCode): array|bool {
 		$preparedStmt = 'call getOneMonHoc(:ma_mon)';
 		$statement = $this->pdo->prepare($preparedStmt);
         
-        $statement->bindParam(':ma_mon', $subjetKey, PDO::PARAM_STR);
+        $statement->bindParam(':ma_mon', $subjetCode, PDO::PARAM_STR);
 		$statement->execute();
 		return $statement->fetch(PDO::FETCH_ASSOC);
 	}

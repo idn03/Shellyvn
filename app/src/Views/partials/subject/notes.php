@@ -88,6 +88,6 @@
     <?php endforeach; ?>
 
     <?php if (count($notes) == 0): ?>
-        <?php require __DIR__ . '/../partials/empty-state.php'; ?>
+        <?php require __DIR__ . '/../../partials/empty-state.php'; ?>
     <?php endif ?>
 </div>

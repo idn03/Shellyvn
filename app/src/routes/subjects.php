@@ -1,7 +1,12 @@
 <?php
 
 $router->mount('/subjects', function () use ($router) {
-    $router->get('/', 'SubjectController@showSubjectsPage');
+    if (!isset($_GET['search'])) {
+        $router->get('/', 'SubjectController@showSubjectsPage');
+    }
+    else {
+        $router->get('/', 'SubjectController@search');
+    }
 
     $router->get('/{subject}','SubjectController@showSubjectDetailPage');
 

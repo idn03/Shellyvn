@@ -135,7 +135,7 @@
                                 > End: <?=htmlEscape(formatDate($subject['ngaykt'])) ?> 
                             </p>
 
-                        <p class="tab"><i class="fa-solid fa-user"></i> Students: ...</p>
+                        <p class="tab"><i class="fa-solid fa-user"></i> Students: <?= count($students) ?></p>
 
                         <p class="tab"><i class="fa-solid fa-note-sticky"></i> Notes: <?= count($notes) ?></p>
                     </div>
@@ -167,8 +167,9 @@
     <?php require __DIR__ . '/../modals/mark-subject.php'; ?>
     <?php require __DIR__ . '/../modals/unmark-subject.php'; ?>
     
-    <?php require __DIR__ . '/../modals/add-note.php'; ?>
-    <?php require __DIR__ . '/../modals/delete-note.php'; ?>
+    <?php require __DIR__ . '/../modals/note.php'; ?>
+
+    <?php require __DIR__ . '/../modals/student.php'; ?>
 </body>
 
 <script>
