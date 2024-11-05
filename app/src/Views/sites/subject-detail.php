@@ -59,7 +59,6 @@
         top: -4px;
         left: 48px;
         z-index: 1;
-        
     }
 
     .btn--mark {

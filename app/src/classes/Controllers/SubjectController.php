@@ -1,7 +1,7 @@
 <?php
 
 namespace App\controllers;
-use App\models\{SubjectModel, NoteModel, StudentModel};
+use App\models\{SubjectModel, NoteModel, StudentModel, UserModel};
 use PDOException;
 
 class SubjectController {
@@ -47,6 +47,73 @@ class SubjectController {
             'notes' => $notes,
             'students' => $students
         ]);
+    }
+
+    public function showUpdateSubjectPage() {
+        $userModel = new UserModel();
+        $users = $userModel->getAll();
+
+        $subjectModel = new SubjectModel();
+        $subjects = $subjectModel->getAll();
+
+        renderPage('/sites/add-subject.php', [
+            'users' => $users,
+            'subjects' => $subjects
+        ]);
+    }
+
+    public function create() {
+        $subjectModel = new SubjectModel();
+        $currentSubjects = $subjectModel->getAll();
+
+        if (strtotime($_POST['ngaykt']) < strtotime($_POST['ngaybd'])) {
+            redirectTo('/subjects/add', [
+                'status' => 'failed',
+                'message' => 'The subject finish date must be after the beginning date'
+            ]);
+
+            return;
+        }
+
+        foreach ($currentSubjects as $subject) {
+            if ($_POST['ma_mon'] === $subject['ma_mon']) {
+                redirectTo('/subjects/add', [
+                    'status' => 'failed',
+                    'message' => 'The subject code has been existed'
+                ]);
+    
+                return;
+            }
+        }
+
+        $data = [];
+        $data['ma_mon'] = $_POST['ma_mon'];
+        $data['tenmon'] = $_POST['tenmon'];
+        $data['ngaybd'] = $_POST['ngaybd'];
+        $data['ngaykt'] = $_POST['ngaykt'];
+        $data['cover'] = $_POST['cover'];
+        $data['taikhoan'] = $_POST['taikhoan'];
+
+        try {
+            $subjectModel->create([
+                'ma_mon' => $data['ma_mon'],
+                'tenmon' => $data['tenmon'],
+                'ngaybd' => $data['ngaybd'],
+                'ngaykt' => $data['ngaykt'],
+                'cover' => $data['cover'],
+                'taikhoan' => $data['taikhoan'],
+            ]);
+            
+            redirectTo('/subjects', [
+                'status' => 'success',
+                'message' => 'New Subject has been created'
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/subjects', [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}
     }
 
     public function mark() {

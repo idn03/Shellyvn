@@ -113,7 +113,6 @@ DELIMITER $$
         order by ghim desc;
     end $$
 $$
-call getAllMonHoc();
 
 DELIMITER $$
     drop procedure if exists getAllMonHocBySomeOne $$
