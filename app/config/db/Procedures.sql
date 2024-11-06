@@ -146,10 +146,10 @@ $$
 
 DELIMITER $$
     drop procedure if exists editMonHoc $$
-    create procedure editMonHoc(in _ma_mon varchar(10),  in _tenmon varchar(50), in _ngaybd date, in _ngaykt date, in _taikhoan varchar(20))
+    create procedure editMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date)
     begin
         update mon_hoc
-        set  tenmon = _tenmon, ngaybd = _ngaybd, ngaykt = _ngaykt, taikhoan = _taikhoan 
+        set  tenmon = _tenmon, ngaybd = _ngaybd, ngaykt = _ngaykt
         where _ma_mon = ma_mon;
     end
 $$

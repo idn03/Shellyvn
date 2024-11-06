@@ -32,6 +32,7 @@ class SubjectController {
 
     public function showSubjectDetailPage() {
         $subjectCode = getLastPath();
+        $_SESSION['ma_mon'] = $subjectCode;
 
         $subjectModel = new SubjectModel();
         $subject = $subjectModel->getOne($subjectCode);
@@ -53,12 +54,18 @@ class SubjectController {
         $userModel = new UserModel();
         $users = $userModel->getAll();
 
-        $subjectModel = new SubjectModel();
-        $subjects = $subjectModel->getAll();
+        if (getLastPath() === 'edit') {
+            $subjectModel = new SubjectModel();
+            $subject = $subjectModel->getOne($_SESSION['ma_mon']);
+
+            renderPage('/sites/edit-subject.php', [
+                'subject' => $subject
+            ]);
+            return;
+        }
 
         renderPage('/sites/add-subject.php', [
-            'users' => $users,
-            'subjects' => $subjects
+            'users' => $users
         ]);
     }
 
@@ -107,6 +114,47 @@ class SubjectController {
             redirectTo('/subjects', [
                 'status' => 'success',
                 'message' => 'New Subject has been created'
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/subjects', [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}
+    }
+
+    public function edit() {
+        $subjectModel = new SubjectModel();
+        $currentSubjects = $subjectModel->getAll();
+
+        if (strtotime($_POST['ngaykt']) < strtotime($_POST['ngaybd'])) {
+            redirectTo('/subjects/edit', [
+                'status' => 'failed',
+                'message' => 'The subject finish date must be after the beginning date'
+            ]);
+
+            return;
+        }
+
+        $data = [];
+        $data['ma_mon'] = $_POST['ma_mon'];
+        $data['tenmon'] = $_POST['tenmon'];
+        $data['ngaybd'] = $_POST['ngaybd'];
+        $data['ngaykt'] = $_POST['ngaykt'];
+        $data['cover'] = $_POST['cover'];
+
+        try {
+            $subjectModel->edit([
+                'ma_mon' => $data['ma_mon'],
+                'tenmon' => $data['tenmon'],
+                'ngaybd' => $data['ngaybd'],
+                'ngaykt' => $data['ngaykt'],
+                'cover' => $data['cover'],
+            ]);
+            
+            redirectTo('/subjects/' . $_POST['ma_mon'], [
+                'status' => 'success',
+                'message' => 'Subject is updated'
             ]);
         } catch (PDOException $e) {
 			redirectTo('/subjects', [

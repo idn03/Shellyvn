@@ -154,10 +154,7 @@ if (isset($_GET['code'])) {
     // LOGIN PAGE EFFECT
     document.addEventListener("DOMContentLoaded", function() {
         const loginBox = document.querySelector('.login-box');
-        const logoBox = document.querySelector('.logo-box');
-
         loginBox.classList.add('show');
-        // logoBox.classList.add('show');
     });
 </script>
 </html>

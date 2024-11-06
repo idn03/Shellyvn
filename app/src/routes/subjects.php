@@ -16,9 +16,6 @@ $router->mount('/subjects', function () use ($router) {
     $router->get('/add','SubjectController@showUpdateSubjectPage');
     $router->post('/add','SubjectController@create');
 
-    // Show Detail Page
-    $router->get('/{subject}','SubjectController@showSubjectDetailPage');
-
     // Edit
     $router->before('GET|POST', '/{subject}/edit', function () {
         isAdmin();
@@ -32,6 +29,10 @@ $router->mount('/subjects', function () use ($router) {
     });
     $router->post('/{subject}/delete','SubjectController@delete');
 
+    // Show Detail Page
+    $router->get('/{subject}','SubjectController@showSubjectDetailPage');
+    
+    // Mark Subject
     $router->post('/{subject}/markImportant','SubjectController@mark');
     $router->post('/{subject}/unmarkImportant','SubjectController@mark');
 });

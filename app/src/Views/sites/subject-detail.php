@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="tools">
-                        <button class="tools__edit"><i class="fa-solid fa-file-pen"></i></button>
+                        <a href="/subjects/<?= htmlEscape($subject['ma_mon']) ?>/edit"><button class="tools__edit"><i class="fa-solid fa-file-pen"></i></button></a>
                         <?= $toolBox; ?>
                     </div>
                 </div>
