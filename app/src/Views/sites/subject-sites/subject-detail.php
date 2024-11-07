@@ -18,7 +18,7 @@
         $canAddNote = 'd-none';
         $canDeleteNote = '';
 
-        require __DIR__ . '/../modals/delete-subject.php';
+        require __DIR__ . '/../../modals/delete-subject.php';
     }
     else {
         $toolBox = '<a href="/contact"><button class="tools__debug"><i class="fa-solid fa-bug"></i></button></a>';
@@ -34,7 +34,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php require __DIR__ . '/../partials/head.php'; ?>
+<?php require __DIR__ . '/../../partials/head.php'; ?>
 
 <style>
     h1 {
@@ -87,9 +87,9 @@
 </style>
 
 <body id="top">
-    <?php require __DIR__ . '/../partials/header.php'; ?>
+    <?php require __DIR__ . '/../../partials/header.php'; ?>
 
-    <?php require __DIR__ . '/../partials/spinner.php'; ?>
+    <?php require __DIR__ . '/../../partials/spinner.php'; ?>
     
     <main id="subject-detail-page">
         <h1><?= htmlEscape($subject['ma_mon']) ?></h1>
@@ -150,25 +150,25 @@
 
         <!-- NOTES -->
         <section class="space-bot">
-            <?php require __DIR__ . '/../partials/subject/notes.php'; ?>
+            <?php require __DIR__ . '/../../partials/subject/notes.php'; ?>
         </section>
 
         <!-- STUDENTS AND CHART -->
         <section>
-            <?php require __DIR__ . '/../partials/subject/student-n-chart.php'; ?>
+            <?php require __DIR__ . '/../../partials/subject/student-n-chart.php'; ?>
         </section>
     </main>
 
-    <?php require __DIR__ . '/../partials/toast.php'; ?>
+    <?php require __DIR__ . '/../../partials/toast.php'; ?>
 
-    <?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../../partials/footer.php'; ?>
 
-    <?php require __DIR__ . '/../modals/mark-subject.php'; ?>
-    <?php require __DIR__ . '/../modals/unmark-subject.php'; ?>
+    <?php require __DIR__ . '/../../modals/mark-subject.php'; ?>
+    <?php require __DIR__ . '/../../modals/unmark-subject.php'; ?>
     
-    <?php require __DIR__ . '/../modals/note.php'; ?>
+    <?php require __DIR__ . '/../../modals/note.php'; ?>
 
-    <?php require __DIR__ . '/../modals/student.php'; ?>
+    <?php require __DIR__ . '/../../modals/student.php'; ?>
 </body>
 
 <script>

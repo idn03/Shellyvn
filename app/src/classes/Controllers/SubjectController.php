@@ -25,7 +25,7 @@ class SubjectController {
             $_SESSION[$subject['ma_mon']]['student'] = count($students);
         }
 
-        renderPage('/sites/subjects.php', [
+        renderPage('/sites/subject-sites/subjects.php', [
             'subjects'=> $subjects
         ]);
     }
@@ -43,7 +43,7 @@ class SubjectController {
         $studentModel = new StudentModel();
         $students = $studentModel->getAll($subjectCode);
 
-        renderPage('/sites/subject-detail.php', [
+        renderPage('/sites/subject-sites/subject-detail.php', [
             'subject' => $subject,
             'notes' => $notes,
             'students' => $students
@@ -58,13 +58,13 @@ class SubjectController {
             $subjectModel = new SubjectModel();
             $subject = $subjectModel->getOne($_SESSION['ma_mon']);
 
-            renderPage('/sites/edit-subject.php', [
+            renderPage('/sites/subject-sites/edit-subject.php', [
                 'subject' => $subject
             ]);
             return;
         }
 
-        renderPage('/sites/add-subject.php', [
+        renderPage('/sites/subject-sites/add-subject.php', [
             'users' => $users
         ]);
     }
@@ -72,6 +72,15 @@ class SubjectController {
     public function create() {
         $subjectModel = new SubjectModel();
         $currentSubjects = $subjectModel->getAll();
+
+        if (isHarassment($_POST['ma_mon'])) {
+            redirectTo('/subjects', [
+                'status' => 'failed',
+                'message' => 'The subject code is not allowed. ARE YOU CRAZY?'
+            ]);
+    
+            return;
+        }
 
         if (strtotime($_POST['ngaykt']) < strtotime($_POST['ngaybd'])) {
             redirectTo('/subjects/add', [
@@ -125,7 +134,15 @@ class SubjectController {
 
     public function edit() {
         $subjectModel = new SubjectModel();
-        $currentSubjects = $subjectModel->getAll();
+
+        if (isHarassment($_POST['ma_mon'])) {
+            redirectTo('/subjects', [
+                'status' => 'failed',
+                'message' => 'The subject code is not allowed. ARE YOU CRAZY?'
+            ]);
+    
+            return;
+        }
 
         if (strtotime($_POST['ngaykt']) < strtotime($_POST['ngaybd'])) {
             redirectTo('/subjects/edit', [

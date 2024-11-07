@@ -183,14 +183,26 @@
 
     .form__textarea {
         margin-top: 16px;
-        padding: 18px;
         border: none;
+        padding: 18px;
         
         min-height: 200px;
         border-radius: var(--bo-l) var(--bo-l) 4px var(--bo-l);
         box-shadow: 0px 4px 4px var(--shadow-color);
 
         outline: none;
+    }
+
+    .form__radio-box {
+        margin-top: 8px;
+        margin-left: 40px;
+        padding: 12px;
+        transition: all 0.5s ease;
+    }
+
+    .radio-checked {
+        border-radius: var(--bo-s);
+        box-shadow: 0px 4px 4px var(--shadow-color);
     }
 
         /* Input Group: Label tag + Input tag */

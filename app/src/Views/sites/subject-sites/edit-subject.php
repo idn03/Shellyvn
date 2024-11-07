@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require __DIR__ . '/../partials/head.php'; ?>
+<?php require __DIR__ . '/../../partials/head.php'; ?>
 
 <style>
     .fa-arrow-turn-up {transform: rotate(90deg);}
@@ -41,9 +41,9 @@
 </style>
 
 <body id="top">
-    <?php require __DIR__ . '/../partials/header.php'; ?>
+    <?php require __DIR__ . '/../../partials/header.php'; ?>
 
-    <?php require __DIR__ . '/../partials/spinner.php'; ?>
+    <?php require __DIR__ . '/../../partials/spinner.php'; ?>
 
     <main>
         <section class="path-tree">
@@ -113,9 +113,9 @@
         </section>
     </main>
 
-    <?php require __DIR__ . '/../partials/toast.php'; ?>
+    <?php require __DIR__ . '/../../partials/toast.php'; ?>
 
-    <?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../../partials/footer.php'; ?>
 </body>
 
 <script>

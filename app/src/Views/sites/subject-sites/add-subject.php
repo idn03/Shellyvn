@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require __DIR__ . '/../partials/head.php'; ?>
+<?php require __DIR__ . '/../../partials/head.php'; ?>
 
 <style>
     .input-group--customize {
@@ -36,9 +36,9 @@
 </style>
 
 <body id="top">
-    <?php require __DIR__ . '/../partials/header.php'; ?>
+    <?php require __DIR__ . '/../../partials/header.php'; ?>
 
-    <?php require __DIR__ . '/../partials/spinner.php'; ?>
+    <?php require __DIR__ . '/../../partials/spinner.php'; ?>
 
     <main>
         <section class="path-tree">
@@ -48,7 +48,7 @@
             <a href="/subjects/add" class="nav-link tab-2"><i class="fa-solid fa-plus"></i> Add Subject</a>
         </section>
 
-        <section id="subject-list" class="text-center">
+        <section class="text-center">
             <h1><i class="fa-solid fa-plus"></i> Add Subject</h1>
         </section>
 
@@ -110,9 +110,9 @@
         </section>
     </main>
 
-    <?php require __DIR__ . '/../partials/toast.php'; ?>
+    <?php require __DIR__ . '/../../partials/toast.php'; ?>
 
-    <?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../../partials/footer.php'; ?>
 </body>
 
 <script>

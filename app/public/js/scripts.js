@@ -12,3 +12,22 @@ window.addEventListener('load', function() {
     }, 100);
   }, 1500);
 });
+
+// Input Radio Effect
+const radioButtons = document.querySelectorAll('input[type="radio"]');
+
+function updateRadioBoxStyle() {
+  document.querySelectorAll('.form__radio-box').forEach(box => {
+    box.classList.remove('radio-checked');
+  });
+
+  radioButtons.forEach(radio => {
+    if (radio.checked) {
+      radio.closest('.form__radio-box').classList.add('radio-checked');
+    }
+  });
+}
+
+radioButtons.forEach(radio => {
+  radio.addEventListener('change', updateRadioBoxStyle);
+});

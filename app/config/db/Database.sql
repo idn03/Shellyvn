@@ -14,6 +14,8 @@ call addMonHoc('SH002', 'AI in IT', '2024-06-10', '2024-06-10', 'coffee.jpg', 'n
 call addMonHoc('SH701', 'Data Structure', '2024-11-2', '2024-3-2', 'plates.jpg', 'nhatnam_0955');
 call addMonHoc('SH122', 'Project Managment', '2024-12-08', '2025-04-08', 'coffee.jpg', 'myhuyen_1126');
 
+call addMonHoc('SH122', 'Project Managment', '2024-12-08', '2025-04-08', 'coffee.jpg', 'myhuyen_1126');
+
 call addGhiChu('Parent meeting on 02/10/2024', 'SH001');
 call addGhiChu('Give a gift to all students', 'SH002');
 call addGhiChu('Update lesson plans before 10/10/2024', 'SH002');

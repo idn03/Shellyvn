@@ -148,13 +148,24 @@
                     <div class="input-group--customize mt-4">
                         <label for="gender">Gender:</label>
                         <div class="profile-form__radio">
-                            <div>
-                                <input type="radio" id="gender--male" name="gioitinh" value="1">
+                            <div class="form__radio-box">
+                                <input 
+                                    type="radio" 
+                                    id="gender--male" 
+                                    name="gioitinh" 
+                                    value="1" 
+                                    <?= $user['gioitinh'] == 1 ? 'checked' : '' ?>
+                                >
                                 <label for="gender--male">Male</label>
                             </div>
     
-                            <div>
-                                <input type="radio" id="gender--female" name="gioitinh" value="0">
+                            <div class="form__radio-box">
+                                <input 
+                                    type="radio" 
+                                    id="gender--female" 
+                                    name="gioitinh" value="0" 
+                                    <?= $user['gioitinh'] == 0 ? 'checked' : '' ?>
+                                >
                                 <label for="gender--female">Female</label>
                             </div>
                         </div>
@@ -172,13 +183,15 @@
                 <form action="/profile/change-password" method="post" class="profile-form">
                     <div class="input-group--customize mt-4">
                         <label for="new-password"><i class="fa-solid fa-key"></i> New Password</label>
-                        <input type="password"confirm- id="new-password" class="form__input">
+                        <input type="password" name="matkhau" id="new-password" class="form__input">
                     </div>
 
                     <div class="input-group--customize mt-4">
                         <label for="confirm-password"><i class="fa-solid fa-key"></i> Confirm Password</label>
-                        <input type="password" name="matkhau" id="confirm-password" class="form__input">
+                        <input type="password" name="xn-matkhau" id="confirm-password" class="form__input">
                     </div>
+
+                    <input type="hidden" name="taikhoan" value="<?= htmlEscape($user['taikhoan']);?>">
 
                     <div class="text-center">
                         <button type="submit">SAVE</button>

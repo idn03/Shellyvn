@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require __DIR__ . '/../partials/head.php'; ?>
+<?php require __DIR__ . '/../../partials/head.php'; ?>
 
 <style>
     /* Search Engine */
@@ -133,9 +133,9 @@
 </style>
 
 <body id="top">
-    <?php require __DIR__ . '/../partials/header.php'; ?>
+    <?php require __DIR__ . '/../../partials/header.php'; ?>
 
-    <?php require __DIR__ . '/../partials/spinner.php'; ?>
+    <?php require __DIR__ . '/../../partials/spinner.php'; ?>
     <main>
         <section class="path-tree">
             <h3>Path Tree:</h3>
@@ -154,7 +154,7 @@
             </div>
         </form>
 
-        <div class="add-subject <?= $displayConstraint ?>">
+        <section class="add-subject <?= $displayConstraint ?>">
             <div class="d-flex">
                 <a class="add-subject__btn" href="/subjects/add">
                     <i class="fa-solid fa-plus"></i>
@@ -165,29 +165,29 @@
                     <p class="tab">This feature is for Administrators only.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <div class="row">
             <?php 
                 if (isset($_GET['search'])) {
-                    require __DIR__ . '/interfaces/searched-subject.php';
+                    require __DIR__ . '/../interfaces/searched-subject.php';
                 }
                 else {
-                    require __DIR__ . '/interfaces/subjects-list.php';
+                    require __DIR__ . '/../interfaces/subjects-list.php';
                 }
             ?> 
 
             <?php if (count($subjects) == 0): ?>
                 <center>
-                    <?php require __DIR__ . '/../partials/empty-state.php'; ?>
+                    <?php require __DIR__ . '/../../partials/empty-state.php'; ?>
                 </center>
             <?php endif ?>
         </div>
     </main>
     
-    <?php require __DIR__ . '/../partials/toast.php'; ?>
+    <?php require __DIR__ . '/../../partials/toast.php'; ?>
 
-    <?php require __DIR__ . '/../partials/footer.php'; ?>
+    <?php require __DIR__ . '/../../partials/footer.php'; ?>
 </body>
 </html>
 
