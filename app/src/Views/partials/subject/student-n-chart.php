@@ -35,8 +35,8 @@
                     <th class="text-center">Score</th>
                 </tr>
             </thead>
-            <?php foreach ($students as $student): ?>
-                <tbody>
+            <tbody>
+                <?php foreach ($students as $student): ?>
                     <tr data-bs-toggle="modal" data-bs-target="#editStudent">
                         <td><?= htmlEscape($student['tenhocvien']); ?></td>
                         <td><?= htmlEscape($student['sdt_hocvien']); ?></td>
@@ -44,8 +44,8 @@
                         <td><?= htmlEscape($student['trinhdo_hocvien']) ?></td>
                         <td class="text-center"><?= $student['diem']; ?> / 10</td>
                     </tr>
-                </tbody>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </tbody>
         </table>
         <?php if (count($students) == 0): ?>
             <?php require __DIR__ . '/../../partials/empty-state.php'; ?>

@@ -75,7 +75,7 @@
         <ul class="nav-list d-flex">
             <li><a href="/" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
             <li><a href="/subjects" class="nav-link"><i class="fa-solid fa-list"></i> Subjects List</a></li>
-            <li class="<?= $displayConstraint ?>"><a href="#" class="nav-link"><i class="fa-solid fa-person"></i> Human Resource</a></li>
+            <li class="<?= $displayConstraint ?>"><a href="/employees" class="nav-link"><i class="fa-solid fa-person"></i> Human Resource</a></li>
             <li><a href="/contact" class="nav-link"><i class="fa-solid fa-address-book"></i> Contact</a></li>
         </ul>
     </nav>

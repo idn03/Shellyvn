@@ -1,5 +1,10 @@
 <?php
 
+function isHarassment($value) {
+	$inValidInput = ['add', 'edit', 'delete', 'contact', 'subject', 'employees', 'home', 'login', 'logout'];
+	return in_array($value, $inValidInput);
+}
+
 // validate required
 function isRequired($value) {
 	return !empty($value);

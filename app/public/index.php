@@ -26,6 +26,9 @@ use Bramus\Router\Router;
         // Student Operations Router
         require_once __DIR__ . '/../src/routes/student.php';
 
+        // Human Resource Router
+        require_once __DIR__ . '/../src/routes/employees.php';
+
         $router->get('/logout', 'AuthController@logout');
     }
     
