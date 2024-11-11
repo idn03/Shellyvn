@@ -107,7 +107,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit">SAVE</button>
+                    <button type="submit"><i class="fa-solid fa-floppy-disk"></i> SAVE</button>
                 </div>
             </form>
         </section>

@@ -160,6 +160,11 @@
         </section>
     </main>
     
+    <?php require __DIR__ . '/../../partials/toast.php'; ?>
     <?php require __DIR__ . '/../../partials/footer.php'; ?>
 </body>
 </html>
+
+<?php 
+removeFromSession('status'); 
+?>

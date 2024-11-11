@@ -175,7 +175,7 @@
                     <input type="hidden" name="loaitk" value="<?= htmlEscape($user['loaitk']); ?>">
 
                     <div class="text-center">
-                        <button type="submit">SAVE</button>
+                        <button type="submit"><i class="fa-solid fa-floppy-disk"></i> SAVE</button>
                     </div>
                 </form>
 
@@ -194,7 +194,7 @@
                     <input type="hidden" name="taikhoan" value="<?= htmlEscape($user['taikhoan']);?>">
 
                     <div class="text-center">
-                        <button type="submit">SAVE</button>
+                        <button type="submit"><i class="fa-solid fa-floppy-disk"></i> SAVE</button>
                     </div>
                 </form>
             </section>

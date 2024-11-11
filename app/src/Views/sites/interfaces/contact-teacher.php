@@ -29,7 +29,7 @@
         <textarea name="des" id="description" class="form__textarea" placeholder="Type here..." class="form-control" required></textarea>
 
         <div class="text-center">
-            <button type="submit">SEND</button>
+            <button type="submit"><i class="fa-solid fa-comment"></i> SEND</button>
         </div>
     </form>
 </section>

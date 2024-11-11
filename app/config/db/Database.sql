@@ -3,6 +3,9 @@ drop database if exists Shelly;
 create database Shelly;
 use Shelly;
 
+call getAllTaiKhoan();
+call deleteTaiKhoan('njgtft');
+
 -- Demo Database
 
 call addTaiKhoan('nhatnam_0955', '12345678', 'Bui Nhat Nam', '1', '1977-01-22', 'Computer Science', 'giangvien');

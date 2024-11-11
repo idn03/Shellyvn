@@ -12,16 +12,34 @@ $client->addScope("profile");
 
 // authenticate code from Google OAuth Flow
 if (isset($_GET['code'])) {
-  $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-  $client->setAccessToken($token['access_token']);
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    var_dump($token);
 
-  // get profile info
-  $google_oauth = new Google_Service_Oauth2($client);
-  $google_account_info = $google_oauth->userinfo->get();
-  $email =  $google_account_info->email;
-  $name =  $google_account_info->name;
+    if (!isset($token['access_token'])) {
+        die('Không thể lấy được token từ Google.');
+    }
 
-  // now you can use this profile info to create account in your website and make user logged in.
+    $client->setAccessToken($token['access_token']);
+
+    $google_oauth = new Google_Service_Oauth2($client);
+    $google_account_info = $google_oauth->userinfo->get();
+    $email = $google_account_info->email;
+
+    $_POST['taikhoan'] = $email;
+
+    $url = 'https://37c5-2402-800-634c-2bd2-9844-a404-f02b-320b.ngrok-free.app/login';
+
+    $data = array(
+        'taikhoan' => $_POST['taikhoan'],
+        'matkhau' => '',
+    );
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+
+    exit();
 } else {
     $authUrl = $client->createAuthUrl();
 }
@@ -155,6 +173,20 @@ if (isset($_GET['code'])) {
     document.addEventListener("DOMContentLoaded", function() {
         const loginBox = document.querySelector('.login-box');
         loginBox.classList.add('show');
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Kiểm tra xem email có được truyền trong URL không
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('taikhoan');
+        
+        if (email) {
+            // Đặt email làm giá trị của trường taikhoan
+            document.getElementById('username').value = email;
+
+            // Tự động gửi biểu mẫu
+            document.querySelector('form').submit();
+        }
     });
 </script>
 </html>

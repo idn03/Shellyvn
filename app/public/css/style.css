@@ -69,10 +69,17 @@
 
         color: #333;
     }
+    button i {
+        transition: all 0.5s;
+        color: #333;
+    }
     button:hover {
         cursor: pointer;
         
         background-color: #333;
+        color: #D7E5CA;
+    }
+    button:hover i {
         color: #D7E5CA;
     }
     button:disabled {
@@ -106,7 +113,10 @@
         background-color: #F87A53;
         margin: 12px 0px;
     }
-    .btn--delete:hover {background-color: #333;}
+    .btn--delete:hover {
+        background-color: #333;
+        color: #F87A53;
+    }
     .btn--delete:hover i {color: #F87A53;}
     .path-tree {
         width: 220px;

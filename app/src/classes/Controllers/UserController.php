@@ -190,7 +190,26 @@ class UserController {
 				'message' => $e
 			]);
 		}
-    } 
+    }
+    
+    public function delete() {
+        $userModel = new UserModel();
+        $username = $_POST['taikhoan'];
+        
+        try {
+            $userModel->delete($username);
+
+            redirectTo('/employees', [
+                'status' => 'success',
+                'message' => $username . ' has been deleted successfully'
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/employees', [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}
+    }
 
     public function addArchivement() {
         $archiveModel = new ArchiveModel();
