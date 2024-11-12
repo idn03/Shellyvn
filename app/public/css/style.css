@@ -251,6 +251,7 @@
 
     .modal-footer {
         border: none;
+        justify-content: space-around;
     }
 
 /* ---  ---  --- */

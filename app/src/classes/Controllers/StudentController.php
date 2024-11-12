@@ -66,4 +66,23 @@ class StudentController {
             ]);
 		}
     }
+
+    public function delete() {
+        $studentModel = new StudentModel();
+        
+        try {
+            $studentPhone = $_POST['sdt_hocvien'];
+            $studentModel->delete($studentPhone);
+
+            redirectTo('/subjects/' . $_POST['ma_mon'], [
+                'status' => 'success',
+                'message' => 'Student has been deleted'
+            ]);
+        } catch (PDOException $e){
+            redirectTo('/subjects/' . $_POST['ma_mon'], [
+                'status' => 'failed',
+                'message' => 'Failed to delete student' . $e
+            ]);
+		}
+    }
 }

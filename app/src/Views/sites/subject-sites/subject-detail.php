@@ -33,7 +33,7 @@
     $emptyChartMessage = '';
     $emptyChart = '';
     if (count($students) == 0) {
-        $emptyChartMessage = 'We need some students to drawing <i class="fa-solid fa-chart-pie"></i> Chart';
+        $emptyChartMessage = '<h5 class="empty-chart-message">We need some students to drawing <i class="fa-solid fa-chart-pie"></i> Chart</h5>';
         $emptyChart = 'd-none';
     }
 
@@ -198,6 +198,8 @@
 
             document.getElementById('edit_gender--male').checked = (gender === '1');
             document.getElementById('edit_gender--female').checked = (gender === '0');
+
+            document.getElementById('delete_phone').value = phoneNumber;
         });
     });
 

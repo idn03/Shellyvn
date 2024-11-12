@@ -39,8 +39,8 @@ class StudentModel {
     $statement->execute();
   }
 
-  public function delete(int $studentPhone) {
-    $preparedStmt = 'call deleteGhiChu(:sdt_hocvien)';
+  public function delete(String $studentPhone) {
+    $preparedStmt = 'call deleteHocVien(:sdt_hocvien)';
     $statement = $this->pdo->prepare($preparedStmt);
     $statement->bindParam(':sdt_hocvien', $studentPhone, PDO::PARAM_STR);
     $statement->execute();

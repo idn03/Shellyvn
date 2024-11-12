@@ -24,6 +24,15 @@
         border-radius: var(--bo-s);
         box-shadow: inset 0px 2px 8px var(--shadow-color);
     }
+
+    .delete-user {
+        position: fixed;
+        top: 800px;
+        right: calc(30% - 9.6px);
+
+        border-radius: 0px 30px 30px 0px;
+    }
+    .delete-user i {margin-right: 0;}
 </style>
 
 <!-- ADD STUDENT MODAL -->
@@ -76,7 +85,7 @@
     </div>
 </div>
 
-<!-- EDIT STUDENT MODAL -->
+<!-- EDIT & DELETE STUDENT MODAL -->
 <div class="modal fade" id="editStudent" tabindex="-1" aria-labelledby="editStudentLabel" aria-hidden="true">
     <div class="modal-dialog space-top">
         <div class="modal-content">
@@ -139,6 +148,12 @@
                 <div class="modal-footer">
                     <button type="submit">SAVE</button>
                 </div>
+            </form>
+            <form action="/subjects/<?= htmlEscape($subject['ma_mon']); ?>/deleteStudent" method="post">
+                <input type="hidden" name="sdt_hocvien" id="delete_phone" class="form__input" required>
+                <input type="hidden" name="ma_mon" value="<?= $subject['ma_mon']; ?>">
+
+                <button class="btn--delete delete-user"><i class="fa-solid fa-trash-can"></i></button>
             </form>
         </div>
     </div>

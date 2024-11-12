@@ -71,9 +71,9 @@
         <button class="add-student-btn" data-bs-toggle="modal" data-bs-target="#addStudent"><i class="fa-solid fa-plus"></i> Add student</button>
     </div>
 
-    <div class="col-lg-4 d-flex" style="align-items: center; justify-content: center;">
+    <div class="col-lg-4 d-flex" style="align-items: center; justify-content: end;">
         <canvas id="myDoughnutChart" class="<?= $emptyChart ?>" width="400" height="400"></canvas>
-        <h5 class="empty-chart-message"><?= $emptyChartMessage ?></h5>
+        <?= $emptyChartMessage ?>
     </div>
 </div>
 
@@ -118,7 +118,7 @@
                         },
                         boxWidth: 20,
                         boxHeight: 20,
-                        padding: 22,
+                        padding: 18,
                     },
                 },
                 tooltip: {
