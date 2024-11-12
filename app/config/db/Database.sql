@@ -26,7 +26,8 @@ call addThanhTuu('Developing the Smart Video Analysis System project (SmartCam I
 
 call addHocVien('0901014368', 'Le Hong Van', 0, 'Highschool Student');
 call addHocVien('0932017332', 'Nguyen Minh Tri', 1, 'Highschool Student', 'SH002');
-call addHocVien('0378001962', 'Nguyen Minh Tri', 1, 'Highschool Student', 'SH002');
 call addHocVien('0903114820', 'Dang Thanh An', 1, 'Highschool Student', 'SH002');
 call addHocVien('0911399842', 'Jessica Truong', 0, 'Highschool Student', 'SH002');
 call getAllHocVienInMon('SH002');
+
+call graded('0911399842', 'SH002', 8);

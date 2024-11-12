@@ -67,8 +67,8 @@
     <div 
         class="container--note" 
         <?= $canDeleteNote ?> 
-        data-value="<?= $note['stt_ghichu']; ?>" 
-        onclick="setNoteSeq(this)"
+        data-value="<?= $note['stt_ghichu']; ?>"
+        onclick="setNoteSeq(this)" 
     >
 
         <img src="/imgs/icons/clip.png" class="img--clip" height="48px" alt="">

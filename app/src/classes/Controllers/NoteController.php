@@ -33,6 +33,7 @@ class NoteController {
 	public function delete(){
         $subjectCode = $_POST['ma_mon'];
         $noteSeq = (int)$_POST['stt_ghichu'];
+        setIntoSession('noteSeq', $_POST['stt_ghichu']);
 		try {
 			$noteModel = new NoteModel();
             $noteModel->delete($noteSeq);

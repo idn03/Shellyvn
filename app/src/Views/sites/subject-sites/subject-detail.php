@@ -174,9 +174,38 @@
 <script>
     function setNoteSeq(element) {
         var noteValue = element.getAttribute('data-value');
-
-        document.getElementById('noteSeq').value = noteValue;
+        document.getElementById('delete_noteSeq').setAttribute('value', noteValue);
     }
+
+    document.querySelectorAll('tr[data-bs-toggle="modal"]').forEach(row => {
+        row.addEventListener('click', () => {
+            var studentName = row.cells[0].getAttribute('data-value');
+            var phoneNumber = row.cells[1].getAttribute('data-value');
+            var gender = row.cells[2].getAttribute('data-value');
+            var educationLevel = row.cells[3].getAttribute('data-value');
+            var score = row.cells[4].getAttribute('data-value');
+
+            document.getElementById('edit_name').value = studentName;
+            document.getElementById('edit_phone').value = phoneNumber;
+            document.getElementById('edit_level').value = educationLevel;
+
+            document.getElementById('edit_gender--male').checked = (gender === '1');
+            document.getElementById('edit_gender--female').checked = (gender === '0');
+        });
+    });
+
+    const listItems = document.querySelectorAll('.score-list li');
+    const iconInput = document.querySelector('input[name="diem"]');
+
+    listItems.forEach(item => {
+        item.addEventListener('click', () => {
+            listItems.forEach(li => li.classList.remove('selected'));
+            item.classList.add('selected');
+
+            const value = item.getAttribute('data-value');
+            iconInput.value = value;
+        });
+    });
 </script>
 </html>
 

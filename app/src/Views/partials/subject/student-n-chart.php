@@ -38,11 +38,22 @@
             <tbody>
                 <?php foreach ($students as $student): ?>
                     <tr data-bs-toggle="modal" data-bs-target="#editStudent">
-                        <td><?= htmlEscape($student['tenhocvien']); ?></td>
-                        <td><?= htmlEscape($student['sdt_hocvien']); ?></td>
-                        <td><?= $student['gioitinh_hocvien'] == 1 ? 'Male' : 'Female'; ?></td>
-                        <td><?= htmlEscape($student['trinhdo_hocvien']) ?></td>
-                        <td class="text-center"><?= $student['diem']; ?> / 10</td>
+                        <td 
+                            data-value="<?= htmlEscape($student['tenhocvien']); ?>"
+                        ><?= htmlEscape($student['tenhocvien']); ?></td>
+                        <td 
+                            data-value="<?= htmlEscape($student['sdt_hocvien']); ?>"
+                        ><?= htmlEscape($student['sdt_hocvien']); ?></td>
+                        <td 
+                            data-value="<?= $student['gioitinh_hocvien'] ?>"
+                        ><?= $student['gioitinh_hocvien'] == 1 ? 'Male' : 'Female'; ?></td>
+                        <td 
+                            data-value="<?= htmlEscape($student['trinhdo_hocvien']); ?>"
+                        ><?= htmlEscape($student['trinhdo_hocvien']); ?></td>
+                        <td 
+                            class="text-center" 
+                            data-value="<?= $student['diem']; ?>"
+                        ><?= $student['diem']; ?> / 10</td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

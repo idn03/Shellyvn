@@ -46,7 +46,7 @@
             </div>
             <form action="/profile/addArchivement" method="post">
                 <div class="modal-body">
-                    <div class="input-roup--customize choose-icon">
+                    <div class="input-group--customize choose-icon">
                         <label>Choose Icon</label>
                         <ul class="d-flex">
                             <li data-value="coral-reef.png"><img src="/imgs/icons/arch-icons/coral-reef.png" height="40px" alt=""></li>
