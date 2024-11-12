@@ -30,6 +30,13 @@
         $isMarkedNav = 'mark';
     }
 
+    $emptyChartMessage = '';
+    $emptyChart = '';
+    if (count($students) == 0) {
+        $emptyChartMessage = 'We need some students to drawing <i class="fa-solid fa-chart-pie"></i> Chart';
+        $emptyChart = 'd-none';
+    }
+
     if (isFull(3, count($notes))) $disableBtn = 'disabled';
 ?>
 <!DOCTYPE html>

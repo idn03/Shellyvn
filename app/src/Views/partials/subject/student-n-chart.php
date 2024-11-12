@@ -16,6 +16,12 @@
         transition: 0.5s all;
     }
     .add-student-btn:hover i {color: #D7E5CA;}
+
+    .empty-chart-message {
+        width: 240px;
+        text-align: center;
+    }
+    .empty-chart-message i {color: #333;}
 </style>
 
 <div class="row">
@@ -64,4 +70,71 @@
 
         <button class="add-student-btn" data-bs-toggle="modal" data-bs-target="#addStudent"><i class="fa-solid fa-plus"></i> Add student</button>
     </div>
+
+    <div class="col-lg-4 d-flex" style="align-items: center; justify-content: center;">
+        <canvas id="myDoughnutChart" class="<?= $emptyChart ?>" width="400" height="400"></canvas>
+        <h5 class="empty-chart-message"><?= $emptyChartMessage ?></h5>
+    </div>
 </div>
+
+<script>
+    const students = <?= json_encode($students); ?>;
+    const ranges = {
+        '0 - 4': students.filter(student => student.diem >= 0 && student.diem < 4),
+        '4 - 7': students.filter(student => student.diem >= 4 && student.diem < 7),
+        '7 - 10': students.filter(student => student.diem >= 7 && student.diem <= 10)
+    };
+
+    const labels = Object.keys(ranges);
+    const data = labels.map(range => ranges[range].length);
+
+    const backgroundColors = [
+        'rgb(248, 122, 83)',
+        'rgb(249, 243, 204)',
+        'rgb(215, 229, 202)',
+    ];
+
+    const ctx = document.getElementById('myDoughnutChart').getContext('2d');
+    const myDoughnutChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Number of students according to mark points',
+                data: data,
+                backgroundColor: backgroundColors,
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#333',
+                        font: {
+                            size: 16,
+                        },
+                        boxWidth: 20,
+                        boxHeight: 20,
+                        padding: 22,
+                    },
+                },
+                tooltip: {
+                    titleFont: {
+                        size: 18
+                    },
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            const range = context.label;
+                            const studentsInRange = ranges[range].map(student => student.tenhocvien);
+                            return `${range}: ${studentsInRange.join(', ')}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
