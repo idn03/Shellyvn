@@ -81,6 +81,20 @@
         margin: 32px 0px;
     }
 
+    .archivement-container i {
+        position: absolute;
+        left: 21.5px;
+        bottom: -12px;
+
+        margin-right: 0;
+
+        color: #333;
+        font-size: 24px;
+        opacity: 0;
+        transition: all 0.5s;
+    }
+    .archivement-container:hover i {opacity: 1;}
+
         .archivement__icon {
             align-self: flex-start;
             background-color: #55679C80;
@@ -90,6 +104,7 @@
 
             border-radius: var(--bo-m);
             box-shadow: 0px 4px 4px var(--shadow-color);
+            cursor: pointer;
         }
 
 
@@ -216,8 +231,21 @@
                     <hr>
 
                     <?php foreach ($archivements as $archivement): ?>
-                        <div class="d-flex archivement-container">
-                            <img src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" height="64px" class="archivement__icon" alt="">
+                        <div 
+                            class="d-flex archivement-container" 
+                            data-value="<?= $archivement['stt_thanhtuu']; ?>" 
+                            onclick="setArchiveSeq(this)"
+                            data-bs-toggle="modal" data-bs-target="#deleteArchivement"
+                        >
+                            <div style="position: relative;">
+                                <img 
+                                    src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" 
+                                    height="64px" 
+                                    class="archivement__icon" 
+                                    alt=""
+                                >
+                                <i class="fa-solid fa-trash-can delete-icon"></i>
+                            </div>
                             
                             <div class="archivement__content">
                                 <h5><?= htmlEscape($archivement['tenthanhtuu']) ?></h5>
@@ -234,7 +262,16 @@
     <?php require __DIR__ . '/../partials/footer.php'; ?>
 
     <?php require __DIR__ . '/../modals/add-archivement.php'; ?>
+    <?php require __DIR__ . '/../modals/delete-archivement.php'; ?>
 </body>
+
+<script>
+    function setArchiveSeq(element) {
+        var archiveValue = element.getAttribute('data-value');
+
+        document.getElementById('archiveSeq').value = archiveValue;
+    }
+</script>
 </html>
 
 <?php removeFromSession('status'); ?>

@@ -51,7 +51,7 @@ class ArchiveModel {
 	}
 
 	public function delete(int $seq) {
-        $preparedStmt = 'call deleteGhiChu(:stt_thanhtuu)';
+        $preparedStmt = 'call deleteThanhTuu(:stt_thanhtuu)';
 		$statement = $this->pdo->prepare($preparedStmt);
 		$statement->bindParam(':stt_thanhtuu', $seq, PDO::PARAM_INT);
         $statement->execute();

@@ -240,4 +240,22 @@ class UserController {
 			]);
 		}
     }
+
+    public function deleteArchivement() {
+        $archiveModel = new ArchiveModel();
+        try {
+            $archiveSeq = (int)$_POST['archiveSeq'];
+            $archiveModel->delete($archiveSeq);
+
+            redirectTo('/profile', [
+                'status' => 'success',
+                'message' => 'Archivement has been deleted'
+            ]);
+        } catch (PDOException $e) {
+			redirectTo('/profile', [
+				'status' => 'failed',
+				'message' => $e
+			]);
+		}    
+    }
 }
