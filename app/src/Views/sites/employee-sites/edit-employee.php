@@ -1,10 +1,16 @@
 <?php
 $disableBtn = 'disabled';
-$message = 'Cannot delete Adminsator';
+$messageA = 'Cannot delete Adminsator';
+$messageB = '';
 
 if ($user['loaitk'] != 'quantri') {
+    $messageA = '';
     $disableBtn = '';
-    $message = '';
+}
+
+if ($user['taikhoan'] == $_SESSION['user']['taikhoan']) {
+    $messageB = 'Cannot delete your Account';
+    $disableBtn = 'disabled';
 }
 ?>
 
@@ -238,7 +244,8 @@ if ($user['loaitk'] != 'quantri') {
                         </p>
                     </div>
 
-                    <div class="text-center mt-2"><?= $message ?></div>
+                    <div class="mt-2" style="text-align: start; margin-left: 24px;"><?= $messageA ?></div>
+                    <div class="mt-2" style="text-align: start; margin-left: 24px;"><?= $messageB ?></div>
                 </div>
             </section>
         </div>

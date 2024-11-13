@@ -65,9 +65,10 @@ class SubjectModel {
 		$statement->execute();
 	}
 
-    public function delete(): array {
-		$preparedStmt = 'call getOneMonHoc()';
+    public function delete(String $value): array {
+		$preparedStmt = 'call deleteMonHoc(:ma_mon)';
 		$statement = $this->pdo->prepare($preparedStmt);
+		$statement->bindParam(':ma_mon', $value, PDO::PARAM_STR);
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
 	}

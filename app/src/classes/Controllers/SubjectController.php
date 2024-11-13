@@ -181,6 +181,25 @@ class SubjectController {
 		}
     }
 
+    public function delete() {
+        $subjectModel = new SubjectModel();
+        
+        try {
+            $subjectCode = $_POST['ma_mon'];
+            $subjectModel->delete($subjectCode);
+
+            redirectTo('/subjects', [
+                'status' => 'success',
+                'message' => 'Subject has been deleted'
+            ]);
+        } catch (PDOException $e){
+            redirectTo('/subjects/' . $_POST['ma_mon'], [
+                'status' => 'failed',
+                'message' => 'Failed to delete subject' . $e
+            ]);
+		}
+    }
+
     public function mark() {
         $subjectModel = new SubjectModel();
         $data = [];

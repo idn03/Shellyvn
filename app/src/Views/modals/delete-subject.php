@@ -10,7 +10,7 @@
             </div>
             <div class="modal-footer">
                 <form action="subjects/<?= $subject['ma_mon'] ?>/delete" method="post">
-                    <input type="hidden" name="subjectCode" value="<?= $subject['ma_mon'] ?>">
+                    <input type="hidden" name="ma_mon" value="<?= $subject['ma_mon'] ?>">
                     <button type="submit" class="btn--delete">DELETE</button>
                 </form>
             </div>
