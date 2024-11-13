@@ -143,9 +143,8 @@
             <a href="/subjects" class="nav-link tab"><i class="fa-solid fa-list"></i> Subjects List</a>
         </section>
 
-        <section id="subject-list" class="text-center">
-            <h1><i class="fa-solid fa-list"></i> Subject List</h1>
-        </section>
+
+        <h1 class="text-center"><i class="fa-solid fa-list"></i> Subject List</h1>
 
         <form action="/subjects" method="get" class="d-flex justify-content-center">
             <div class="search-engine">
@@ -167,7 +166,7 @@
             </div>
         </section>
 
-        <div class="row">
+        <div class="row subject-list">
             <?php 
                 if (isset($_GET['search'])) {
                     require __DIR__ . '/../interfaces/searched-subject.php';

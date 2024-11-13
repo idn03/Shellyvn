@@ -233,7 +233,7 @@ class SubjectController {
             $students = $studentModel->getAll($queryResult['ma_mon']);
             $_SESSION[$queryResult['ma_mon']]['student'] = count($students);
 
-            renderPage('/sites/subjects.php', [
+            renderPage('/sites/subject-sites/subjects.php', [
                 'subjects'=> $queryResult
             ]);
         } catch (PDOException $e) {

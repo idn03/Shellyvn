@@ -1,3 +1,9 @@
+<style>
+    .subject-list {
+        justify-content: center;
+    }
+</style>
+
 <section class="col-lg-5 card subject-card">
     <i class="fa-solid fa-bookmark marked-icon <?= $subjects['ghim'] != 1 ? 'd-none' : '' ?>"></i>
     <img src="/imgs/covers/<?= htmlEscape($subjects['cover']) ?>" class="card-img-top" alt="...">
