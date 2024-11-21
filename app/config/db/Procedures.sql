@@ -10,6 +10,16 @@ DELIMITER $$
 $$
 
 DELIMITER $$
+    drop procedure if exists getTaiKhoanPerPage $$
+    create procedure getTaiKhoanPerPage(in _start int, in _end int)
+    begin
+        select *
+        from tai_khoan
+        limit _start, _end;
+    end $$
+$$
+
+DELIMITER $$
     drop procedure if exists getFullName $$
     create procedure getFullName(in _taikhoan varchar(20))
     begin
@@ -146,10 +156,10 @@ $$
 
 DELIMITER $$
     drop procedure if exists editMonHoc $$
-    create procedure editMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date)
+    create procedure editMonHoc(in _ma_mon varchar(10), in _tenmon varchar(50), in _ngaybd date, in _ngaykt date, in _cover varchar(20))
     begin
         update mon_hoc
-        set  tenmon = _tenmon, ngaybd = _ngaybd, ngaykt = _ngaykt
+        set  tenmon = _tenmon, ngaybd = _ngaybd, ngaykt = _ngaykt, cover = _cover
         where _ma_mon = ma_mon;
     end
 $$

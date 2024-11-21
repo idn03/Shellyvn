@@ -84,6 +84,17 @@
     }
 
     tr td {align-content: center;}
+
+    /* Paginator */
+    .pagination {
+        margin-top: 12px;
+    }
+    .pagination a {font-size: 18px;}
+    
+    .isHere {
+        border-radius: var(--bo-s);
+        box-shadow: inset 0px 2px 8px var(--shadow-color);
+    }
 </style>
 
 <body>
@@ -157,12 +168,39 @@
                     <?php endforeach; ?>
                 </tbody>
             </table>
+            <?php if (count($users) == 0): ?>
+                <?php require __DIR__ . '/../../partials/empty-state.php'; ?>
+            <?php endif ?>
+
+            <div class="d-flex justify-content-center">
+                <div class="pagination">
+                    <a href="?page=1" class="nav-link">1</a>
+                    <a href="?page=2" class="nav-link">2</a>
+                    <a href="?page=3" class="nav-link">3</a>
+                    <a href="?page=4" class="nav-link">4</a>
+                    <a href="?page=5" class="nav-link">5</a>
+                </div>
+            </div>
         </section>
     </main>
     
     <?php require __DIR__ . '/../../partials/toast.php'; ?>
     <?php require __DIR__ . '/../../partials/footer.php'; ?>
 </body>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const currentPage = params.get('page');
+
+    const paginationLinks = document.querySelectorAll('.pagination .nav-link');
+
+    paginationLinks.forEach(link => {
+        const page = new URL(link.href).searchParams.get('page');
+        if (page === currentPage) {
+            link.classList.add('isHere');
+        }
+    });
+</script>
 </html>
 
 <?php 

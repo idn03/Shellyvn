@@ -37,14 +37,14 @@
     }
 </style>
 
-<div class="modal fade" id="addArchivement" tabindex="-1" aria-labelledby="addArchivementLabel" aria-hidden="true">
+<div class="modal fade" id="addAchievement" tabindex="-1" aria-labelledby="addAchievementLabel" aria-hidden="true">
     <div class="modal-dialog space-top">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="addArchivementLabel"><i class="fa-solid fa-trophy"></i> Add Archivement</h4>
+                <h4 class="modal-title" id="addAchievementLabel"><i class="fa-solid fa-trophy"></i> Add Achievement</h4>
                 <i class="fa-solid fa-xmark" data-bs-dismiss="modal"></i>
             </div>
-            <form action="/profile/addArchivement" method="post">
+            <form action="/profile/addAchievement" method="post">
                 <div class="modal-body">
                     <div class="input-group--customize choose-icon">
                         <label>Choose Icon</label>
@@ -62,13 +62,13 @@
                     </div>
 
                     <div class="input-group--customize mt-4">
-                        <label for="archivementname">Archivement Name</label>
-                        <input type="text" name="tenthanhtuu" id="archivementname" class="form__input" required>
+                        <label for="achievementname">Achievement Name</label>
+                        <input type="text" name="tenthanhtuu" id="achievementname" class="form__input" required>
                     </div>
 
                     <div class="input-group--customize mt-4">
-                        <label for="archivedate">Achievement Date</label>
-                        <input type="date" name="ngaycap" id="archivedate" class="form__input" required>
+                        <label for="achievedate">Achievement Date</label>
+                        <input type="date" name="ngaycap" id="achievedate" class="form__input" required>
                     </div>
 
                     <textarea 

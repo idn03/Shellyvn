@@ -1,7 +1,7 @@
 <?php
 
 namespace App\controllers;
-use App\models\{UserModel, ArchiveModel};
+use App\models\{UserModel, AchieveModel};
 use PDOException;
 
 class HomeController {
@@ -13,12 +13,12 @@ class HomeController {
         $userModel = new UserModel();
 		$user = $userModel->getOne($_SESSION['user']['taikhoan']);
 
-        $archiveModel = new ArchiveModel();
-        $archivements = $archiveModel->getBySomeOne($_SESSION['user']['taikhoan']);
+        $achieveModel = new AchieveModel();
+        $achievements = $achieveModel->getBySomeOne($_SESSION['user']['taikhoan']);
 
         renderPage('/sites/home.php', [
             'user' => $user,
-            'archivements' => $archivements
+            'achievements' => $achievements
         ]);
     }
 }

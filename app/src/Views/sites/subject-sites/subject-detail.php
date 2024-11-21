@@ -9,6 +9,9 @@
     $canAddNote = '';
     $canDeleteNote = 'data-bs-toggle="modal" data-bs-target="#deleteNote"';
 
+    $canAddStudent = '';
+    $canEditStudent = 'data-bs-toggle="modal" data-bs-target="#editStudent"';
+
     if (isAdmin()) {
         $toolBox = '
             <button class="tools__delete" data-bs-toggle="modal" data-bs-target="#deleteSubject">
@@ -17,6 +20,8 @@
         ';
         $canAddNote = 'd-none';
         $canDeleteNote = '';
+        $canAddStudent = 'd-none';
+        $canEditStudent = '';
 
         require __DIR__ . '/../../modals/delete-subject.php';
     }

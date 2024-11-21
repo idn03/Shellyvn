@@ -40,12 +40,12 @@
             justify-content: space-evenly;
         }
 
-    /* Archivements */
-    .archives-container {
+    /* Achievements */
+    .achieves-container {
         padding: 32px;
     }
 
-    .add-archive-icon {
+    .add-achieve-icon {
         background-color: #D2E0FB80;
 
         display: flex;
@@ -58,11 +58,11 @@
 
         text-decoration: none;
     }
-    .add-archive-icon:hover {
+    .add-achieve-icon:hover {
         cursor: pointer;
     }
 
-    .add-archive-icon i {
+    .add-achieve-icon i {
         align-self: center;
         
         font-size: 24px;
@@ -70,18 +70,18 @@
         margin: 0;
     }
 
-    .add-archive-content {
+    .add-achieve-content {
         margin: 18px 0px 0px 18px;
     }
-    .archivement-container p, 
-    .add-archive-content p {color: #33333380;}
+    .achievement-container p, 
+    .add-achieve-content p {color: #33333380;}
 
-    .archivement-container {
+    .achievement-container {
         align-items: center;
         margin: 32px 0px;
     }
 
-    .archivement-container i {
+    .achievement-container i {
         position: absolute;
         left: 21.5px;
         bottom: -12px;
@@ -93,10 +93,9 @@
         opacity: 0;
         transition: all 0.5s;
     }
-    .archivement-container:hover i {opacity: 1;}
+    .achievement-container:hover i {opacity: 1;}
 
-        .archivement__icon {
-            align-self: flex-start;
+        .achievement__icon {
             background-color: #55679C80;
             
             margin-right: 16px;
@@ -215,41 +214,41 @@
             </section>
 
             <section class="col-lg-6">
-                <h3 class="text-center">Archivements</h3>
-                <div class="archives-container">
+                <h3 class="text-center">Achievements</h3>
+                <div class="achieves-container">
                     <div class="d-flex mb-4">
-                        <div class="add-archive-icon" data-bs-toggle="modal" data-bs-target="#addArchivement">
+                        <div class="add-achieve-icon" data-bs-toggle="modal" data-bs-target="#addAchievement">
                             <i class="fa-solid fa-plus"></i>
                         </div>
 
-                        <div class="add-archive-content">
-                            <h5>Add New Archivement</h5>
+                        <div class="add-achieve-content">
+                            <h5>Add New Achievement</h5>
                             <p class="tab">Achievements can be awards, certificates, your products or projects, etc.</p>
                         </div>
                     </div>
 
                     <hr>
 
-                    <?php foreach ($archivements as $archivement): ?>
+                    <?php foreach ($achievements as $achievement): ?>
                         <div 
-                            class="d-flex archivement-container" 
-                            data-value="<?= $archivement['stt_thanhtuu']; ?>" 
-                            onclick="setArchiveSeq(this)"
-                            data-bs-toggle="modal" data-bs-target="#deleteArchivement"
+                            class="d-flex achievement-container" 
+                            data-value="<?= $achievement['stt_thanhtuu']; ?>" 
+                            onclick="setAchieveSeq(this)"
+                            data-bs-toggle="modal" data-bs-target="#deleteAchievement"
                         >
-                            <div style="position: relative;">
+                            <div style="position: relative; align-self: flex-start;">
                                 <img 
-                                    src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" 
+                                    src="/imgs/icons/arch-icons/<?= htmlEscape($achievement['icon']) ?>" 
                                     height="64px" 
-                                    class="archivement__icon" 
+                                    class="achievement__icon" 
                                     alt=""
                                 >
-                                <i class="fa-solid fa-trash-can delete-icon"></i>
+                                <i class="fa-solid fa-trash-can"></i>
                             </div>
                             
-                            <div class="archivement__content">
-                                <h5><?= htmlEscape($archivement['tenthanhtuu']) ?></h5>
-                                <p class="tab"><?= htmlEscape($archivement['mota']) ?></p>
+                            <div class="achievement__content">
+                                <h5><?= htmlEscape($achievement['tenthanhtuu']) ?></h5>
+                                <p class="tab"><?= htmlEscape($achievement['mota']) ?></p>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -261,15 +260,15 @@
 
     <?php require __DIR__ . '/../partials/footer.php'; ?>
 
-    <?php require __DIR__ . '/../modals/add-archivement.php'; ?>
-    <?php require __DIR__ . '/../modals/delete-archivement.php'; ?>
+    <?php require __DIR__ . '/../modals/add-achievement.php'; ?>
+    <?php require __DIR__ . '/../modals/delete-achievement.php'; ?>
 </body>
 
 <script>
-    function setArchiveSeq(element) {
-        var archiveValue = element.getAttribute('data-value');
+    function setAchieveSeq(element) {
+        var achieveValue = element.getAttribute('data-value');
 
-        document.getElementById('archiveSeq').value = archiveValue;
+        document.getElementById('achieveSeq').value = achieveValue;
     }
 </script>
 </html>

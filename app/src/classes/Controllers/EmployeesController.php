@@ -1,7 +1,7 @@
 <?php
 
 namespace App\controllers;
-use App\models\{UserModel, ArchiveModel, SubjectModel};
+use App\models\{UserModel, AchieveModel, SubjectModel};
 use PDOException;
 
 
@@ -9,6 +9,24 @@ class EmployeesController {
     public function showHRPage() {
         $userModel = new UserModel();
         $users = $userModel->getAll();
+
+        $numRow = count($users);
+
+        if (isset($_GET['page'])) {
+            $rowsPerPage = 4;
+            $page = $_GET['page'] - 1;
+
+            $start = $rowsPerPage * $page;
+            $end = $rowsPerPage + $start;
+
+            $usersInPage = $userModel->getPagination($start, $end);
+
+            renderPage('/sites/employee-sites/employees.php', [
+                'users'=> $usersInPage,
+            ]);
+
+            return;
+        }
 
         renderPage('/sites/employee-sites/employees.php', [
             'users'=> $users
@@ -24,8 +42,8 @@ class EmployeesController {
             $userModel = new UserModel();
             $user = $userModel->getOne($username);
 
-            $archiveModel = new ArchiveModel();
-            $archives = $archiveModel->getBySomeOne($username);
+            $achieveModel = new AchieveModel();
+            $achieves = $achieveModel->getBySomeOne($username);
 
             $subjectModel = new SubjectModel();
             $subjects = $subjectModel->getBySomeOne($username);
@@ -33,7 +51,7 @@ class EmployeesController {
             renderPage('/sites/employee-sites/edit-employee.php', [
                 'user' => $user,
                 'subjects' => $subjects,
-                'archives' => $archives,
+                'achieves' => $achieves,
             ]);
         }
     }

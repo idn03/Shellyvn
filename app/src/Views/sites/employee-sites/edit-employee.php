@@ -228,8 +228,8 @@ if ($user['taikhoan'] == $_SESSION['user']['taikhoan']) {
 
                     <div class="space-top"></div>
                     <img src="/imgs/icons/trophy.png" height="80px" alt="">
-                    <h3 class="title-number mt-2"><?= count($archives); ?></h3>
-                    <h5>Archivements</h5>
+                    <h3 class="title-number mt-2"><?= count($achieves); ?></h3>
+                    <h5>Achievements</h5>
 
                     <div class="space-top"></div>
                     <div class="delete-user-container">

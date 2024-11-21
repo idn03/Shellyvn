@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 <?php foreach ($students as $student): ?>
-                    <tr data-bs-toggle="modal" data-bs-target="#editStudent">
+                    <tr <?= $canEditStudent; ?>>
                         <td 
                             data-value="<?= htmlEscape($student['tenhocvien']); ?>"
                         ><?= htmlEscape($student['tenhocvien']); ?></td>
@@ -68,7 +68,15 @@
             <?php require __DIR__ . '/../../partials/empty-state.php'; ?>
         <?php endif ?>
 
-        <button class="add-student-btn" data-bs-toggle="modal" data-bs-target="#addStudent"><i class="fa-solid fa-plus"></i> Add student</button>
+        <button 
+            class="add-student-btn" 
+            data-bs-toggle="modal" 
+            data-bs-target="#addStudent"
+            <?= $canAddStudent ?>
+        >
+            <i class="fa-solid fa-plus"></i> 
+            Add student
+        </button>
     </div>
 
     <div class="col-lg-4 d-flex" style="align-items: center; justify-content: end;">

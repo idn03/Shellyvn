@@ -53,14 +53,14 @@
 
         .edit-btn i { color: #333; }
     
-    .archivement-container {
+    .achievement-container {
         align-items: center;
         margin: 32px 12px;
     }
-    .archivement-container h3 {max-width: 400px;}
-    .archivement-container p {opacity: 0.8;}
+    .achievement-container h3 {max-width: 400px;}
+    .achievement-container p {opacity: 0.8;}
 
-        .archivement__icon {
+        .achievement__icon {
             background-color: #55679C80;
             
             margin-right: 16px;
@@ -122,13 +122,13 @@
         </a>
 
         <section>
-            <?php foreach ($archivements as $archivement): ?>
-                <div class="d-flex archivement-container">
-                    <img src="/imgs/icons/arch-icons/<?= htmlEscape($archivement['icon']) ?>" height="64px" class="archivement__icon" alt="">
+            <?php foreach ($achievements as $achievement): ?>
+                <div class="d-flex achievement-container">
+                    <img src="/imgs/icons/arch-icons/<?= htmlEscape($achievement['icon']) ?>" height="64px" class="achievement__icon" alt="">
                     
-                    <div class="archivement__content">
-                        <h5><?= htmlEscape($archivement['tenthanhtuu']) ?></h5>
-                        <p class="tab"><?= htmlEscape($archivement['mota']) ?></p>
+                    <div class="achievement__content">
+                        <h5><?= htmlEscape($achievement['tenthanhtuu']) ?></h5>
+                        <p class="tab"><?= htmlEscape($achievement['mota']) ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\controllers;
-use App\models\{UserModel, ArchiveModel};
+use App\models\{UserModel, AchieveModel};
 use PDOException;
 
 class UserController {
@@ -9,12 +9,12 @@ class UserController {
         $userModel = new UserModel();
 		$user = $userModel->getOne($_SESSION['user']['taikhoan']);
 
-        $archiveModel = new ArchiveModel();
-        $archivements = $archiveModel->getBySomeOne($_SESSION['user']['taikhoan']);
+        $achieveModel = new AchieveModel();
+        $achievements = $achieveModel->getBySomeOne($_SESSION['user']['taikhoan']);
         
         renderPage('/sites/profile.php', [
             'user'=> $user,
-            'archivements' => $archivements
+            'achievements' => $achievements
         ]);
     }
 
@@ -122,9 +122,11 @@ class UserController {
         try {
             if (!empty($_FILES['avatar_file']['name'])) {
                 $user = $userModel->getOne($_POST['taikhoan']);
-                $currentAvatarPath = $_SERVER['DOCUMENT_ROOT'] . "/imgs/avatars/" . $user['avatar'];
-                if (file_exists($currentAvatarPath) && is_file($currentAvatarPath)) {
-                    unlink($currentAvatarPath);
+                if ($user['avatar'] != 'default-avatar.png') {
+                    $currentAvatarPath = $_SERVER['DOCUMENT_ROOT'] . "/imgs/avatars/" . $user['avatar'];
+                    if (file_exists($currentAvatarPath) && is_file($currentAvatarPath)) {
+                        unlink($currentAvatarPath);
+                    }
                 }
 
                 $avatarName = uniqid() . $_FILES['avatar_file']['name'];
@@ -211,8 +213,8 @@ class UserController {
 		}
     }
 
-    public function addArchivement() {
-        $archiveModel = new ArchiveModel();
+    public function addAchievement() {
+        $achieveModel = new AchieveModel();
         $data = [];
         $data['tenthanhtuu'] = $_POST['tenthanhtuu'];
         $data['ngaycap'] = $_POST['ngaycap'];
@@ -221,7 +223,7 @@ class UserController {
         $data['taikhoan'] = $_POST['taikhoan'];
 
         try {
-            $archiveModel->create([
+            $achieveModel->create([
                 'tenthanhtuu' => $data['tenthanhtuu'],
                 'ngaycap' => $data['ngaycap'],
                 'mota' => $data['mota'],
@@ -231,7 +233,7 @@ class UserController {
 
             redirectTo('/profile', [
                 'status' => 'success',
-                'message' => 'Archivement unlocked'
+                'message' => 'Achievement unlocked'
             ]);
         } catch (PDOException $e) {
 			redirectTo('/profile', [
@@ -241,15 +243,15 @@ class UserController {
 		}
     }
 
-    public function deleteArchivement() {
-        $archiveModel = new ArchiveModel();
+    public function deleteAchievement() {
+        $achieveModel = new AchieveModel();
         try {
-            $archiveSeq = (int)$_POST['archiveSeq'];
-            $archiveModel->delete($archiveSeq);
+            $achieveSeq = (int)$_POST['achieveSeq'];
+            $achieveModel->delete($achieveSeq);
 
             redirectTo('/profile', [
                 'status' => 'success',
-                'message' => 'Archivement has been deleted'
+                'message' => 'Achievement has been deleted'
             ]);
         } catch (PDOException $e) {
 			redirectTo('/profile', [

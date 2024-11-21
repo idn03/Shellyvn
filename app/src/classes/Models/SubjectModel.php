@@ -48,12 +48,13 @@ class SubjectModel {
     }
 
     public function edit(array $data) {
-        $preparedStmt = 'call editMonHoc(:ma_mon, :tenmon, :ngaybd, :ngaykt)';
+        $preparedStmt = 'call editMonHoc(:ma_mon, :tenmon, :ngaybd, :ngaykt, :cover)';
 		$statement = $this->pdo->prepare($preparedStmt);
 		$statement->bindParam(':ma_mon', $data['ma_mon'], PDO::PARAM_STR);
 		$statement->bindParam(':tenmon', $data['tenmon'], PDO::PARAM_STR);
 		$statement->bindParam(':ngaybd', $data['ngaybd'], PDO::PARAM_STR);
         $statement->bindParam(':ngaykt', $data['ngaykt'], PDO::PARAM_STR);
+		$statement->bindParam(':cover', $data['cover'], PDO::PARAM_STR);
 		$statement->execute();
     }
 

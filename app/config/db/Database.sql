@@ -3,11 +3,13 @@ drop database if exists Shelly;
 create database Shelly;
 use Shelly;
 
--- Demo Database
+call getTaiKhoanPerPage(0, 4);
 
+-- Demo Database
 call addTaiKhoan('nhatnam_0955', '12345678', 'Bui Nhat Nam', '1', '1977-01-22', 'Computer Science', 'giangvien');
 call addTaiKhoan('myhuyen_1126', '1', 'Luong My Huyen', '0', '1999-08-01', 'Data Science and Analytics', 'giangvien');
 call addTaiKhoan('admin1', '1', 'Dang Nhat Duy', '1', '2003-10-27', 'Information Technology', 'quantri');
+call addTaiKhoan('hoangtrung_2785', '1', 'Tran Hoang Trung', '1', '1962-11-02', 'Information Technology', 'giangvien');
 
 call addMonHoc('SH001', 'C++ Programming', '2024-06-10', '2024-10-10', 'silk.jpg', 'nhatnam_0955');
 call addMonHoc('SH002', 'AI in IT', '2024-06-10', '2024-06-10', 'coffee.jpg', 'nhatnam_0955');

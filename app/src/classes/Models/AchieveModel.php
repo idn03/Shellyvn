@@ -3,7 +3,7 @@ namespace App\models;
 use PDO;
 use Config\db\PDOFactory;
 
-class ArchiveModel {
+class AchieveModel {
     private PDO $pdo;
     
     public function __construct() {

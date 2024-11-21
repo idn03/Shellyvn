@@ -34,6 +34,15 @@ class UserModel {
 		return $statement->fetch(PDO::FETCH_ASSOC);
 	}
 
+	public function getPagination(int $start, int $end): array {
+		$preparedStmt = 'call getTaiKhoanPerPage(:start, :end)';
+		$statement = $this->pdo->prepare($preparedStmt);
+		$statement->bindParam(':start', $start, PDO::PARAM_INT);
+		$statement->bindParam(':end', $end, PDO::PARAM_INT);
+		$statement->execute();
+		return $statement->fetchAll(PDO::FETCH_ASSOC);
+	}
+
  	public function create(array $data): void {
 		$preparedStmt = 'call addTaiKhoan(:taikhoan, :matkhau, :hoten, :gioitinh, :ngaysinh, :chuyennganh, :loaitk)';
 		$statement = $this->pdo->prepare($preparedStmt);
