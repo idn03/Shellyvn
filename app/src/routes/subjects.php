@@ -17,9 +17,6 @@ $router->mount('/subjects', function () use ($router) {
     $router->post('/add','SubjectController@create');
 
     // Edit
-    $router->before('GET|POST', '/{subject}/edit', function () {
-        isAdmin();
-    });
     $router->get('/{subject}/edit','SubjectController@showUpdateSubjectPage');
     $router->post('/{subject}/edit','SubjectController@edit');
 

@@ -384,3 +384,12 @@ DELIMITER $$
         where sdt_hocvien = _sdt_hocvien and ma_mon = _ma_mon;
     end $$
 $$
+
+DELIMITER $$
+    drop procedure if exists registerNewCourse $$
+    create procedure registerNewCourse(in _sdt_hocvien varchar(12), in _ma_mon varchar(10))
+    begin
+        insert into hoc(sdt_hocvien, ma_mon, diem)
+        values (_sdt_hocvien, _ma_mon, 0);
+	end $$
+$$

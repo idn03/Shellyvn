@@ -104,10 +104,18 @@
 
         .card-title {
             position: absolute;
-            top: 240px;
+            top: 220px;
             left: 16px;
             font-weight: var(--text-bold);
         }
+        
+            .card-title__status {
+                background-color: #A6AEBF65;
+
+                padding: 8px;
+
+                border-radius: var(--bo-s);
+            }
         
         .card-body { padding: 24px; }
         

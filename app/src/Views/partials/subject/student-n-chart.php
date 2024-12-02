@@ -69,10 +69,9 @@
         <?php endif ?>
 
         <button 
-            class="add-student-btn" 
+            class="add-student-btn <?= $canAddStudent ?>" 
             data-bs-toggle="modal" 
             data-bs-target="#addStudent"
-            <?= $canAddStudent ?>
         >
             <i class="fa-solid fa-plus"></i> 
             Add student
@@ -88,8 +87,8 @@
 <script>
     const students = <?= json_encode($students); ?>;
     const ranges = {
-        '0 - 4': students.filter(student => student.diem >= 0 && student.diem < 4),
-        '4 - 7': students.filter(student => student.diem >= 4 && student.diem < 7),
+        '1 - 4': students.filter(student => student.diem > 0 && student.diem < 4),
+        '4 - 6': students.filter(student => student.diem >= 4 && student.diem < 7),
         '7 - 10': students.filter(student => student.diem >= 7 && student.diem <= 10)
     };
 

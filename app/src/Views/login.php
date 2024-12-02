@@ -70,12 +70,14 @@
                 <div class="m-4">
                     <img src="/imgs/logo-text.png" height="60px" alt="">
                 </div>
-                <p>&nbsp; Shelly is an online platform specifically designed to support educational centers in the field 
+                <h5 class="tab">Designed by iDn03</h5>
+                <hr width="90%">
+                <p style="text-align: justify;">&nbsp; Shelly is an online platform specifically designed to support educational centers in the field 
                     of information technology in teaching and management. With a user-friendly interface and modern 
                     features, Shelly optimizes the process of managing students, organizing courses, tracking learning
                     progress, and evaluating teaching effectiveness.
                 </p>
-                <p>&nbsp; We believe Shelly will become your trusted companion on your journey to advancing education!</p>
+                <p style="text-align: justify;">&nbsp; We believe Shelly will become your trusted companion on your journey to advancing education!</p>
             </div>
             <div class="col-lg-2"></div>
         </div>

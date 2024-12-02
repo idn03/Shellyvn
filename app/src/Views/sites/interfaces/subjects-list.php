@@ -1,8 +1,25 @@
 <?php foreach ($subjects as $subject): ?>
+    <?php
+        $currentDate = new DateTime('now');
+        $startDate = DateTime::createFromFormat('Y-m-d', $subject['ngaybd']);
+        $endDate = DateTime::createFromFormat('Y-m-d', $subject['ngaykt']);
+        $subjectStatus = '';
+
+        if ($currentDate < $startDate) {
+            $subjectStatus = 'Not started';
+        } elseif ($currentDate >= $startDate && $currentDate <= $endDate) {
+            $subjectStatus = 'In progress';
+        } else {
+            $subjectStatus = 'Completed';
+        }
+    ?>
     <section class="col-lg-5 card subject-card">
         <i class="fa-solid fa-bookmark marked-icon <?= $subject['ghim'] != 1 ? 'd-none' : '' ?>"></i>
         <img src="/imgs/covers/<?= htmlEscape($subject['cover']) ?>" class="card-img-top" alt="...">
-        <h3 class="card-title"><?= htmlEscape($subject['tenmon']); ?></h3>
+        <div class="card-title">
+            <h3><?= htmlEscape($subject['tenmon']); ?></h3>
+            <span class="card-title__status"><?= $subjectStatus ?></span>
+        </div>
         <div class="card-body">
             <h5>ID: <?= htmlEscape($subject['ma_mon']) ?> - <?= htmlEscape($subject['taikhoan']) ?></h5>
             <div class="d-flex" style="justify-content: space-between;">

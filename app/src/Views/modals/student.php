@@ -28,7 +28,7 @@
     .delete-user {
         position: fixed;
         top: 800px;
-        right: calc(30% - 9.6px);
+        right: calc(30% - 6.9px);
 
         border-radius: 0px 30px 30px 0px;
     }

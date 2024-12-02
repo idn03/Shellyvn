@@ -13,10 +13,18 @@ class StudentModel {
   public function getAll(String $subjectCode): array {
 		$preparedStmt = 'call getAllHocVienInMon(:ma_mon)';
 		$statement = $this->pdo->prepare($preparedStmt);
-        $statement->bindParam(':ma_mon', $subjectCode, PDO::PARAM_STR);
+    $statement->bindParam(':ma_mon', $subjectCode, PDO::PARAM_STR);
 		$statement->execute();
 		return $statement->fetchAll(PDO::FETCH_ASSOC);
 	}
+
+  public function getOne(String|null $phone): array  {
+    $preparedStmt = 'call getOneHocVien(:sdt_hocvien)';
+		$statement = $this->pdo->prepare($preparedStmt);
+    $statement->bindParam(':sdt_hocvien', $phone, PDO::PARAM_STR);
+		$statement->execute();
+		return $statement->fetch(PDO::FETCH_ASSOC);
+  }
 
   public function create(array $data) {
     $preparedStmt = 'call addHocVien(:sdt_hocvien, :tenhocvien, :gioitinh_hocvien, :trinhdo_hocvien, :ma_mon)';
@@ -25,6 +33,14 @@ class StudentModel {
     $statement->bindParam(':tenhocvien', $data['tenhocvien'], PDO::PARAM_STR);
     $statement->bindParam(':gioitinh_hocvien', $data['gioitinh_hocvien'], PDO::PARAM_INT);
     $statement->bindParam(':trinhdo_hocvien', $data['trinhdo_hocvien'], PDO::PARAM_STR);
+    $statement->bindParam(':ma_mon', $data['ma_mon'], PDO::PARAM_STR);
+    $statement->execute();
+  }
+
+  public function reCreate (array $data) {
+    $preparedStmt = 'call registerNewCourse(:sdt_hocvien, :ma_mon)';
+    $statement = $this->pdo->prepare($preparedStmt);
+    $statement->bindParam(':sdt_hocvien', $data['sdt_hocvien'], PDO::PARAM_STR);
     $statement->bindParam(':ma_mon', $data['ma_mon'], PDO::PARAM_STR);
     $statement->execute();
   }

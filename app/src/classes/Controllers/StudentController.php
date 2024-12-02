@@ -15,7 +15,18 @@ class StudentController {
 
         try {
             $studentModel = new StudentModel();
-            $studentModel->create($data);
+            $student = $studentModel->getOne($data['sdt_hocvien']);
+
+            if (count($student) != 0) 
+                $studentModel->create($data);
+            else {
+                $studentModel->reCreate([
+                    'sdt_hocvien' => $data['sdt_hocvien'],
+                    'ma_mon' => $data['ma_mon']
+                ]);
+            }
+                
+
             redirectTo('/subjects/' . $_POST['ma_mon'], [
                 'status' => 'success',
                 'message' => 'A new student has been added'
