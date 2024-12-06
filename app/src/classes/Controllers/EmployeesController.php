@@ -71,10 +71,13 @@ class EmployeesController {
         try {
             if (!empty($_FILES['avatar_file']['name'])) {
                 $user = $userModel->getOne($_POST['taikhoan']);
-                $currentAvatarPath = $_SERVER['DOCUMENT_ROOT'] . "/imgs/avatars/" . $user['avatar'];
-                if (file_exists($currentAvatarPath) && is_file($currentAvatarPath)) {
-                    unlink($currentAvatarPath);
+                if ($user['avatar'] != 'default-avatar.png') {
+                    $currentAvatarPath = $_SERVER['DOCUMENT_ROOT'] . "/imgs/avatars/" . $user['avatar'];
+                    if (file_exists($currentAvatarPath) && is_file($currentAvatarPath)) {
+                        unlink($currentAvatarPath);
+                    }
                 }
+                
 
                 $avatarName = uniqid() . $_FILES['avatar_file']['name'];
                 $avatarTemp = $_FILES['avatar_file']['tmp_name'];

@@ -52,6 +52,11 @@
             justify-content: start;
         }
 
+        .nav-list li {
+            padding: 0;
+            margin-top: 8px;
+        }
+
         /* Extra */
         #header__extra {
             justify-content: space-around;

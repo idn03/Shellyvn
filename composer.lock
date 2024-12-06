@@ -169,16 +169,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.380.0",
+            "version": "v0.384.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "a706b940e309d6cd858eee6a394e89fa17310c93"
+                "reference": "fcb190bb02cea2c939e67867bf9122fd8d02c351"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/a706b940e309d6cd858eee6a394e89fa17310c93",
-                "reference": "a706b940e309d6cd858eee6a394e89fa17310c93",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/fcb190bb02cea2c939e67867bf9122fd8d02c351",
+                "reference": "fcb190bb02cea2c939e67867bf9122fd8d02c351",
                 "shasum": ""
             },
             "require": {
@@ -207,9 +207,9 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.380.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.384.0"
             },
-            "time": "2024-11-03T01:06:19+00:00"
+            "time": "2024-11-27T01:08:46+00:00"
         },
         {
             "name": "google/auth",
@@ -822,10 +822,10 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
+    "platform": {},
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

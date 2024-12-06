@@ -184,6 +184,10 @@
     .btn--add-note:hover i {color: #D7E5CA;}
 
     /* Form */
+    input[type="radio"] {
+        accent-color: #B7C4CF;
+    }
+
     .form-label--file:hover {cursor: pointer;}
     
     .form__input {
@@ -209,7 +213,7 @@
 
     .form__radio-box {
         margin-top: 8px;
-        margin-left: 40px;
+        margin-left: 24px;
         padding: 12px;
         transition: all 0.5s ease;
     }
