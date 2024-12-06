@@ -1,5 +1,5 @@
 # Project học phần: Niên Luận Cơ Sở (CT271)
-4rd.I (2024 - 2025)
+4th.I (2024 - 2025)
 
 # MSSV 
 B2105568
@@ -16,7 +16,7 @@ Shelly - Teaching Assitance
 Các phần mềm hỗ trợ cần cài đặt để chạy dự án:
     - XAMPP, link cài đặt: https://www.apachefriends.org/download.html
     - MySQL Workbench, link cài đặt: https://dev.mysql.com/downloads/workbench/ 
-    - Composer,
+    - Composer, link cài đặt: https://getcomposer.org/download/
 
 # CÁC BƯỚC KHỞI TẠO DỰ ÁN
     Bước I - Cài đặt Web Root:
