@@ -13,12 +13,13 @@ CT271 - 09
 # Tên dự án
 Shelly - Teaching Assitance
 
-Các phần mềm hỗ trợ cần cài đặt để chạy dự án:
-    - XAMPP, link cài đặt: https://www.apachefriends.org/download.html
-    - MySQL Workbench, link cài đặt: https://dev.mysql.com/downloads/workbench/ 
-    - Composer, link cài đặt: https://getcomposer.org/download/
-
 # CÁC BƯỚC KHỞI TẠO DỰ ÁN
+    Các phần mềm hỗ trợ cần cài đặt để chạy dự án:
+        - XAMPP, link cài đặt: https://www.apachefriends.org/download.html
+        - MySQL Workbench, link cài đặt: https://dev.mysql.com/downloads/workbench/ 
+        - Composer, link cài đặt: https://getcomposer.org/download/
+    ---
+
     Bước I - Cài đặt Web Root:
         1. Mở file /xampp/apache/conf/extra/httpd-vhosts.conf
         2. Thêm phần VirtualHost phía dưới vào cuối tập tin
@@ -57,10 +58,3 @@ Các phần mềm hỗ trợ cần cài đặt để chạy dự án:
             2.d> Quay lại file Database.sql và thực thi các dòng lệnh còn lại
         3. Sau khi hoàn thành, mở trình duyệt và thử truy cập vào đường dẫn shelly.localhost để truy cập vào trang web
     ---
-
-
-?? NOTE:
-    #8EACCD Xanh đậm
-    #D2E0FB Xanh nhạt
-    #F9F3CC Vàng be
-    #D7E5CA Xanh lá
